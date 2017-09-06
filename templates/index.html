@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Lisp Tutor</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Lisp Tutor</h1>
+  </header>
+  <section>
+    <table>
+      <caption>
+        <th>No.</th>
+        <td>Check</td>
+        <td>目標</td>
+      </caption>
+      <colgroup span="2"></colgroup>
+      <colgroup span="1" class="description"></colgroup>
+      <tr>
+        <th>{{ num }}</th>
+        <td>{{ q.check }}</td>
+        <td>{{ q.description }}</td>
+      </tr>
+    </table>
+  </section>
+</body>
+</html>
