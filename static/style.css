@@ -35,12 +35,22 @@ table {
   max-width: 1000px;
   margin: 48px auto 0;
   border: 1px solid #999;
+  border-collapse: collapse;
 }
 
 table * {
   border: 1px solid #999;
 }
 
+table tr {
+  height: 2em;
+}
+
 table .description {
   width: 80%;
+}
+
+table tr.clickable:hover {
+  background-color: #eeeeff;
+  cursor: pointer;
 }

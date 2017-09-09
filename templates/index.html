@@ -18,11 +18,13 @@
       </caption>
       <colgroup span="2"></colgroup>
       <colgroup span="1" class="description"></colgroup>
-      <tr>
-        <th>{{ num }}</th>
+      {% for q in questions %}
+        <tr class="clickable" onclick="location.href='/ex/{{ q.path }}'">
+        <th>{{ forloop.counter }}</th>
         <td>{{ q.check }}</td>
-        <td>{{ q.description }}</td>
+        <td>{{ q.data.description }}</td>
       </tr>
+      {% endfor %}
     </table>
   </section>
 </body>
