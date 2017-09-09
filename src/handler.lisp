@@ -5,8 +5,8 @@
                 :render-index
                 :render-exercise
                 :notfound)
-  (:import-from :darkmatter.client.runtime
-                :+launch-server+
+  (:import-from :cl-exercise.process
+                :+launch-darkmatter+
                 :get-entity
                 :get-port
                 :make-server-process-table
@@ -14,7 +14,7 @@
                 :delete-server-process-table
                 :add-host
                 :get-proc)
-  (:import-from :darkmatter.utils
+  (:import-from :cl-exercise.utils
                 :split)
   (:export :->get
            :->put))
@@ -25,10 +25,11 @@
 
 (defun ->get (env)
   (let ((params (split (getf env :request-uri) #\/)))
+    (format t "~A(~A)~%" params (length params))
     (case (length params)
-      (0 (render-index env))
-      (2 (if (string= "ex" (aref params 0))
-             (render-exercise env (aref params 1))))
+      (2 (render-index env))
+      (3 (if (string= "ex" (aref params 1))
+             (render-exercise env (aref params 2))))
       (t (notfound env)))))
 
 (defun ->put (env))
