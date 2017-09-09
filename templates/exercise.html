@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ question.data.name }} - Lisp Tutor</title>
+  <script>
+    const QUESTION_PATH = "{{ question.path }}";
+    const QUESTION = {
+      prepare: "{{ question.data.prepare | safe }}" || null,
+      test: {% if question.data.test %} "{{ question.data.test | safe }}" {% else %} null {% endif %},
+      expect: {% if question.data.expect %} "{{ question.data.expect | safe }}" {% else %} null {% endif %},
+      requirements: {
+        symbols: {% if question.data.requirements.symbols %} "{{ question.data.requirements.symbols | safe }}" {% else %} null {% endif %}
+      }
+    };
+  </script>
+</head>
+<body>
+  <h2>{{ question.data.name }}</h2>
+  <p>{{ question.data.content }}</p>
+  <section>
+    <div id="cell">
+      <textarea id="editor"></textarea>
+      <div id="result"></div>
+    </div>
+    <input id="eval-button" type="button" value="Check">
+  </section>
+</body>
+</html>
