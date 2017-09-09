@@ -18,13 +18,15 @@
   :license "MIT"
   :depends-on (:alexandria
                :clack
-               :darkmatter
-               :darkmatter-notebook)
+               :djula
+               :yason)
   :components ((:module "src"
                 :components
                 ((:file "cl-exercise" :depends-on ("handler"))
-                 (:file "handler" :depends-on ("render"))
-                 (:file "render"))))
+                 (:file "handler" :depends-on ("render" "process" "utils"))
+                 (:file "render" :depends-on ("process"))
+                 (:file "process")
+                 (:file "utils"))))
   :description ""
   :long-description
   #.(with-open-file (stream (merge-pathnames
