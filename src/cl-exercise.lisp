@@ -8,7 +8,9 @@
                 :builder)
   (:import-from :alexandria
                 :hash-table-plist
-                :starts-with-subseq))
+                :starts-with-subseq)
+  (:export :start
+           :stop))
 (in-package :cl-exercise)
 
 (defparameter *web*
@@ -24,3 +26,20 @@
                              path
                              nil)))
         *web*))
+
+(defvar *handler* nil)
+
+(defun start (&rest args &key server port debug &allow-other-keys)
+  (declare (ignore server port debug))
+  (when *handler*
+    (restart-case (error "Server is already running.")
+      (restart-server ()
+        :report "Restart the server"
+        (stop))))
+  (setf *handler*
+        (apply #'clack:clackup *web* args)))
+
+(defun stop ()
+  (prog1
+      (clack:stop *handler*)
+(setf *handler* nil)))
