@@ -1,0 +1,10 @@
+{
+  "name": "Q1",
+  "description": "変数への束縛を学ぶ",
+  "content": "appendを使ってxの末尾に3を追加しなさい．",
+  "prepare": "(defvar x (list 1 2))",
+  "test": "(equalp x '(1 2 3))",
+  "requirements": {
+    "symbols": ["append", "x"]
+  }
+}
