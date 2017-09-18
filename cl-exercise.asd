@@ -19,14 +19,17 @@
   :depends-on (:alexandria
                :clack
                :djula
+               :jsonrpc
+               :quri
                :yason)
   :components ((:module "src"
                 :components
-                ((:file "cl-exercise" :depends-on ("handler"))
+                ((:file "cl-exercise" :depends-on ("env" "handler"))
                  (:file "handler" :depends-on ("render" "process" "utils"))
                  (:file "render" :depends-on ("process"))
                  (:file "process")
-                 (:file "utils"))))
+                 (:file "utils")
+                 (:file "env"))))
   :description ""
   :long-description
   #.(with-open-file (stream (merge-pathnames

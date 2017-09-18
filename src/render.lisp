@@ -1,6 +1,8 @@
 (in-package :cl-user)
 (defpackage cl-exercise.render
   (:use :cl)
+  (:import-from :cl-exercise.env
+                :*host*)
   (:import-from :cl-exercise.process
                 )
   (:import-from :alexandria
@@ -57,12 +59,17 @@
   (let ((*current-store* *file-store*)
         (path (format nil "~A/~A.json"
                       (namestring *data-directory*)
-                      fname)))
+                      fname))
+        (host (or *host*
+                  (format nil "http://~A:~A"
+                          (getf env :server-name)
+                          (getf env :server-port)))))
     (if (probe-file path)
         `(200 (:content-type "text/html")
           (,(djula:render-template* +exercise.html+ nil
-                                ;:runtime (html-runtime env)
-                                :question (read-question-file path))))
+                                    :host host
+                                    ;:runtime (html-runtime env)
+                                    :question (read-question-file path))))
         (notfound env))))
 
 (defun notfound (env)
