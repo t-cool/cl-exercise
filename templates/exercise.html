@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ question.data.name }} - Lisp Tutor</title>
+  <script src="/static/HttpRequest.js"></script>
+  <script src="/static/EvalClient.js"></script>
   <script>
     const QUESTION_PATH = "{{ question.path }}";
     const QUESTION = {
@@ -13,6 +15,26 @@
         symbols: {% if question.data.requirements.symbols %} "{{ question.data.requirements.symbols | safe }}" {% else %} null {% endif %}
       }
     };
+    let client = new EvalClient("{{ host }}", "user_id", "tutor");
+    function send(code, resultElement) {
+      client.initialize(["cl-exercise"])
+        .then(() => {
+          client.eval(code)
+            .then(res => {
+              let result = res.result;
+              console.log(res);
+              resultElement.innerHTML = `<p>${result.returnValue}</p><pre>${result.output}</pre>`
+            })
+            .catch(err => {
+              console.log(err);
+            })
+        })
+    }
+    function onclickEvalButton() {
+      let editor = document.getElementById("editor");
+      let result = document.getElementById("result");
+      send(editor.value, result);
+    }
   </script>
 </head>
 <body>
@@ -23,7 +45,7 @@
       <textarea id="editor"></textarea>
       <div id="result"></div>
     </div>
-    <input id="eval-button" type="button" value="Check">
+    <input id="eval-button" type="button" value="Check" onclick="onclickEvalButton();">
   </section>
 </body>
 </html>
