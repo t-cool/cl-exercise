@@ -44,3 +44,9 @@
           (setf (fill-pointer seq) (read-sequence seq stream))
           seq)))
   :in-order-to ((test-op (test-op cl-exercise-test))))
+
+(defsystem cl-exercise/darkmatter
+  :depends-on (:darkmatter)
+  :components ((:module "plugin"
+                :components
+                ((:file "eval")))))
