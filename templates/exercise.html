@@ -49,21 +49,29 @@
       let editor = document.getElementById("editor");
       let result = document.getElementById("result");
       let loader = document.getElementById("eval-loader");
+      result.innerHTML = "";
       loader.classList.add("show");
-      send(editor.value, result, () => loader.classList.remove("show"));
+      send(editor.innerHTML, result, () => loader.classList.remove("show"));
     }
   </script>
 </head>
 <body>
-  <h2>{{ question.data.name }}</h2>
-  <p>{{ question.data.content }}</p>
-  <section>
-    <div id="cell">
-      <textarea id="editor"></textarea>
-      <div id="result"></div>
+  <header>
+    <h1>Lisp Tutor</h1>
+  </header>
+  <section class="center">
+    <div id="desc-area" class="block">
+      <h2>{{ question.data.name }}</h2>
+      <pre>{{ question.data.content }}</pre>
+    </div>
+    <div id="edit-area" class="block">
+      <div id="editor" contenteditable="true" spellcheck="false"></div>
     </div>
     <input id="eval-button" type="button" value="Check" onclick="onclickEvalButton();">
-    <div id="eval-loader" class="loader"><span>(</span><span>)</span></div>
+    <div id="result-area" class="block">
+      <div id="eval-loader" class="loader center"><span>(</span><span>)</span></div>
+      <div id="result"></div>
+    </div>
   </section>
 </body>
 </html>
