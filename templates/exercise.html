@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ question.data.name }} - Lisp Tutor</title>
+  <link rel="stylesheet" href="/static/style.css">
   <script src="/static/HttpRequest.js"></script>
   <script src="/static/EvalClient.js"></script>
   <script>
@@ -16,24 +17,40 @@
       }
     };
     let client = new EvalClient("{{ host }}", "user_id", "tutor");
-    function send(code, resultElement) {
+    function send(code, resultElement, callback) {
       client.initialize(["cl-exercise"])
         .then(() => {
-          client.eval(code)
-            .then(res => {
-              let result = res.result;
-              console.log(res);
-              resultElement.innerHTML = `<p>${result.returnValue}</p><pre>${result.output}</pre>`
+          client.eval(QUESTION.prepare)
+           .then(() => {
+             const options = {
+               test: QUESTION.test,
+               expect: QUESTION.expect,
+               requirements: QUESTION.requirements
+             };
+             client.eval(code, null, null, options)
+               .then(res => {
+                 callback();
+                 let result = res.result;
+                 console.log(res);
+                 resultElement.innerHTML = `<p>${result.returnValue}</p><pre>${result.output}</pre>`;
+               })
+               .catch(err => {
+                 callback();
+                 console.log(err);
+               })
             })
-            .catch(err => {
-              console.log(err);
-            })
+           .catch(() => {
+             callback();
+             console.error("Error has thrown when preparing the question.");
+           })
         })
     }
     function onclickEvalButton() {
       let editor = document.getElementById("editor");
       let result = document.getElementById("result");
-      send(editor.value, result);
+      let loader = document.getElementById("eval-loader");
+      loader.classList.add("show");
+      send(editor.value, result, () => loader.classList.remove("show"));
     }
   </script>
 </head>
@@ -46,6 +63,7 @@
       <div id="result"></div>
     </div>
     <input id="eval-button" type="button" value="Check" onclick="onclickEvalButton();">
+    <div id="eval-loader" class="loader"><span>(</span><span>)</span></div>
   </section>
 </body>
 </html>
