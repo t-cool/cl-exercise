@@ -55,7 +55,37 @@ table tr.clickable:hover {
   cursor: pointer;
 }
 
+div.block {
+  border: 1px solid #999;
+  border-radius: 8px;
+  background-color: #eee;
+  width: 800px;
+  margin: 8px auto;
+  text-align: left;
+  padding: 8px 12px;
+}
+
+div.block#desc-area {
+  min-height: 20vh;
+}
+div.block#edit-area {
+  min-height: 30vh;
+}
+div.block#result-area {
+  min-height: 15vh;
+}
+
+div#editor {
+  width: 100%;
+  min-height: 30vh;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.1) inset;
+  background-color: white;
+  display: block;
+}
+
 #eval-loader {
+  height: 0;
   visibility: hidden;
 }
 
@@ -64,8 +94,12 @@ table tr.clickable:hover {
 }
 
 
+.center {
+  text-align: center;
+}
+
+
 .loader {
-  position: absolute;
   z-index: 100;
   font-family: Consolas, Menlo, Monaco, monospace;
   font-weight: bold;
