@@ -54,3 +54,37 @@ table tr.clickable:hover {
   background-color: #eeeeff;
   cursor: pointer;
 }
+
+#eval-loader {
+  visibility: hidden;
+}
+
+#eval-loader.show {
+  visibility: visible;
+}
+
+
+.loader {
+  position: absolute;
+  z-index: 100;
+  font-family: Consolas, Menlo, Monaco, monospace;
+  font-weight: bold;
+  font-size: 4em;
+  opacity: 0.8;
+}
+
+.loader span {
+  display: inline-block;
+  animation: pulse 0.4s alternate infinite ease-in-out;
+}
+
+.loader span:nth-child(odd) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  to {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+}
