@@ -15,6 +15,9 @@
            :stop))
 (in-package :cl-exercise)
 
+(defvar *root-directory*
+  (asdf:system-relative-pathname "cl-exercise" ""))
+
 (defparameter *web*
   (lambda (env)
     (case (getf env :request-method)
@@ -27,7 +30,8 @@
         (:static :path (lambda (path)
                          (if (starts-with-subseq "/static/" path)
                              path
-                             nil)))
+                             nil))
+         :root *root-directory*)
         *web*))
 
 (defvar *handler* nil)
