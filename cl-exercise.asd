@@ -49,4 +49,5 @@
   :depends-on (:darkmatter)
   :components ((:module "plugin"
                 :components
-                ((:file "eval")))))
+                ((:file "eval" :depends-on ("messages"))
+                 (:file "messages")))))
