@@ -89,9 +89,7 @@
 
 
 (defun ->get (env)
-  (print env)
   (let ((params (split (getf env :request-uri) #\/)))
-    (format t "~A(~A)~%" params (length params))
     (case (length params)
       (2 (render-index env))
       (3 (if (string= "ex" (aref params 1))
@@ -149,6 +147,7 @@
             `(200 (:content-type "application/json")
               (,(response-result id json-string))))
           (error (c)
+                 (format t "# ERROR: ~A~%" c)
                  (let ((entity (get-entity (get-proc *server-table* id descripter))))
                    (loop for line = (read-line (uiop:process-info-output entity))
                          while line
