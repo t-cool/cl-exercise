@@ -1,7 +1,7 @@
 {
   "name": "Q2",
   "description": "appendの使い方を学ぶ",
-  "content": "appendを使ってxの末尾に3を追加しなさい．\n戻り値で判定します．",
+  "content": "appendを使ってxの末尾に3を追加しなさい.\n\n戻り値で判定します．",
   "prepare": "(defvar x (list 1 2))",
   "expect": "(lambda (x) (equalp x (list 1 2 3)))",
   "requirements": {
