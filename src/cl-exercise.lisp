@@ -2,7 +2,8 @@
 (defpackage cl-exercise
   (:use :cl)
   (:import-from :cl-exercise.env
-                :*host*)
+                :*host*
+                :*debug*)
   (:import-from :cl-exercise.handler
                 :->get
                 :->put)
@@ -45,6 +46,8 @@
         (stop))))
   (when host
     (setf *host* host))
+  (when debug
+    (setf *debug* debug))
   (setf *handler*
         (apply #'clack:clackup *web* args)))
 
