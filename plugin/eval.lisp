@@ -1,6 +1,8 @@
 (in-package :dm-user)
 (defpackage cl-exercise/darkmatter
-  (:use :cl :dm-user))
+  (:use :cl :dm-user)
+  (:import-from :cl-exercise/darkmatter.messages
+                :not-found-symbol))
 (in-package :cl-exercise/darkmatter)
 
 (defun %contains (list symbol)
@@ -12,44 +14,51 @@
             (return t)))))
 
 (defun check-sexp (sexp optional)
-  (format t "[Check] S-exp~%")
+  (when *debug*
+    (format t "<b>[DEBUG] Check S-expression: ~A</b>~%" sexp))
   (let ((requirements (gethash "requirements" optional)))
     (when requirements
-      (format t "has requirements~%")
       (let ((symbols (gethash "symbols" requirements)))
         (when symbols
-          (format t "has symbols ~A~%" (read-from-string symbols))
+          (when *debug*
+            (format t "<b>[DEBUG] Symbols: ~A</b>~%" symbols))
           (setf (gethash "sexpResult" optional)
                 (write-to-string
-                  (reduce (lambda (acc symbol)
-                            (and acc
-                                 (let ((contain? (%contains sexp symbol)))
-                                       (when (null contain?)
-                                         (format t "~A not found~%" symbol))
-                                       contain?)))
-                          (read-from-string symbols)
-                          :initial-value t)))
-          (format t "sexpResult = ~A~%" (gethash "sexpResult" optional))))))
+                  (loop for check in (mapcar (lambda (symbol)
+                                               (let ((contain? (%contains sexp symbol)))
+                                                 (when (null contain?)
+                                                   (not-found-symbol symbol))
+                                                 contain?))
+                                             (read-from-string symbols))
+                        always check)))
+          (when *debug*
+            (format t "<b>[DEBUG] sexpResult = ~A</b>~%" (gethash "sexpResult" optional)))))))
   (values sexp optional))
 
 (defun check-expect (return-value optional)
-  (format t "[Check] expect~%")
+  (when *debug*
+    (format t "<b>[DEBUG] Check return value: ~A</b>~%" return-value))
   (let ((expect (gethash "expect" optional)))
     (when expect
-      (format t "expect by ~A~%" expect)
+      (when *debug*
+        (format t "<b>[DEBUG] (funcall #'~A ~A)</b>~%" expect return-value))
       (setf (gethash "expectResult" optional)
             (write-to-string (funcall (eval (read-from-string expect)) return-value)))
-      (format t "expectResult = ~A~%" (gethash "expectResult" optional)))
+      (when *debug*
+        (format t "<b>[DEBUG] expectResult = ~A</b>~%" (gethash "expectResult" optional))))
     (values return-value optional)))
 
 (defun check-test (return-value output-rendering optional)
-  (format t "[Check] test~%")
+  (when *debug*
+    (format t "<b>[DEBUG] Check test case</b>~%"))
   (let ((test (gethash "test" optional)))
     (when test
-      (format t "test by ~A~%" test)
+      (when *debug*
+        (format t "<b>[DEBUG] Test case: ~A</b>~%" test))
       (setf (gethash "testResult" optional)
             (write-to-string (eval (read-from-string test))))
-      (format t "testResult = ~A~%" (gethash "testResult" optional)))
+      (when *debug*
+        (format t "<b>[DEBUG] testResult = ~A</b>~%" (gethash "testResult" optional))))
     (values return-value output-rendering optional)))
 
 (hook-eval-string-before #'check-sexp)
