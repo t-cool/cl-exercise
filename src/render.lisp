@@ -2,7 +2,8 @@
 (defpackage cl-exercise.render
   (:use :cl)
   (:import-from :cl-exercise.env
-                :*host*)
+                :*host*
+                :*debug*)
   (:import-from :cl-exercise.process
                 )
   (:import-from :alexandria
@@ -39,14 +40,43 @@
             (format nil "~A/*.json"
                     (namestring *data-directory*)))))
 
+(defun hash-table-plist-recur (ht)
+  (mapcar (lambda (elm)
+            (if (hash-table-p elm)
+                (hash-table-plist-recur elm)
+                elm))
+          (hash-table-plist ht)))
+
+(defun escape (str)
+  (let ((tmp (make-array 0 :element-type 'character
+                           :fill-pointer 0
+                           :adjustable t)))
+    (loop for c across str
+          if (eq c #\Newline)
+          do (vector-push-extend #\\ tmp)
+             (vector-push-extend #\n tmp)
+          else
+          do (vector-push-extend c tmp))
+    tmp))
+
+(defun escape-plist (plist)
+  (loop with res = (list)
+        for key in plist by #'cddr
+        for value in (rest plist) by #'cddr
+        if (stringp value)
+        do (setf res (append res (list key (escape value))))
+        else
+        do (setf res (append res (list key value)))
+        finally (return res)))
+
 (defun read-question-file (path)
-  (let ((data
-          (hash-table-plist
+  (let* ((data
+          (hash-table-plist-recur
             (yason:parse
               (read-string-from-file path))))
-        (filename (pathname-name path)))
+         (filename (pathname-name path)))
     (list "path" filename
-          "data" data)))
+          "data" (escape-plist data))))
 
 (defun render-index (env)
   (let ((*current-store* *file-store*)
@@ -65,11 +95,13 @@
                           (getf env :server-name)
                           (getf env :server-port)))))
     (if (probe-file path)
-        `(200 (:content-type "text/html")
-          (,(djula:render-template* +exercise.html+ nil
-                                    :host host
-                                    ;:runtime (html-runtime env)
-                                    :question (read-question-file path))))
+        (let ((question (read-question-file path)))
+          `(200 (:content-type "text/html")
+            (,(djula:render-template* +exercise.html+ nil
+                                      :host host
+                                      :debug *debug*
+                                      ;:runtime (html-runtime env)
+                                      :question question))))
         (notfound env))))
 
 (defun notfound (env)
