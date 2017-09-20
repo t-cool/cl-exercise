@@ -4,6 +4,21 @@
   <meta charset="UTF-8">
   <title>Lisp Tutor</title>
   <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/Storage.js"></script>
+  <script>
+    window.onpageshow = () => {
+      let checkElements = document.getElementsByClassName("check");
+      for (let checkElement of checkElements) {
+        console.log(checkElement);
+        let check = ExerciseStorage.getCheck(checkElement.dataset.checkId);
+        if (check) {
+          checkElement.dataset.checked = "true";
+        } else {
+          checkElement.dataset.checked = "false";
+        }
+      }
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -21,7 +36,7 @@
       {% for q in questions %}
         <tr class="clickable" onclick="location.href='/ex/{{ q.path }}'">
         <th>{{ forloop.counter }}</th>
-        <td>{{ q.check }}</td>
+        <td class="check" data-checked="false" data-check-id="{{ q.path }}"><span></span></td>
         <td>{{ q.data.description }}</td>
       </tr>
       {% endfor %}

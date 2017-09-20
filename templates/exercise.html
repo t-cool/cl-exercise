@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>{{ question.data.name }} - Lisp Tutor</title>
   <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/marked.min.js"></script>
+  <script src="/static/Storage.js"></script>
   <script src="/static/HttpRequest.js"></script>
   <script src="/static/EvalClient.js"></script>
   <script>
@@ -16,44 +18,12 @@
         symbols: {% if question.data.requirements.symbols %} "{{ question.data.requirements.symbols | safe }}" {% else %} null {% endif %}
       }
     };
-    let client = new EvalClient("{{ host }}", "user_id", "tutor");
-    function send(code, resultElement, callback) {
-      client.initialize(["cl-exercise"])
-        .then(() => {
-          client.eval(QUESTION.prepare)
-           .then(() => {
-             const options = {
-               test: QUESTION.test,
-               expect: QUESTION.expect,
-               requirements: QUESTION.requirements
-             };
-             client.eval(code, null, null, options)
-               .then(res => {
-                 callback();
-                 let result = res.result;
-                 console.log(res);
-                 resultElement.innerHTML = `<p>${result.returnValue}</p><pre>${result.output}</pre>`;
-               })
-               .catch(err => {
-                 callback();
-                 console.log(err);
-               })
-            })
-           .catch(() => {
-             callback();
-             console.error("Error has thrown when preparing the question.");
-           })
-        })
-    }
-    function onclickEvalButton() {
-      let editor = document.getElementById("editor");
-      let result = document.getElementById("result");
-      let loader = document.getElementById("eval-loader");
-      result.innerHTML = "";
-      loader.classList.add("show");
-      send(editor.innerHTML, result, () => loader.classList.remove("show"));
-    }
+    const TITLE = "{{ question.data.name | safe }}";
+    const DESCRIPTION = "{{ question.data.content }}";
+    const HOST = "{{ host }}";
+    const DEBUG = "{{ debug }}" === "T";
   </script>
+  <script src="/static/main.js"></script>
 </head>
 <body>
   <header>
@@ -61,8 +31,7 @@
   </header>
   <section class="center">
     <div id="desc-area" class="block">
-      <h2>{{ question.data.name }}</h2>
-      <pre>{{ question.data.content }}</pre>
+      <span id="description"></span>
     </div>
     <div id="edit-area" class="block">
       <div id="editor" contenteditable="true" spellcheck="false"></div>
