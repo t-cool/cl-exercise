@@ -48,16 +48,13 @@
           (hash-table-plist ht)))
 
 (defun escape (str)
-  (let ((tmp (make-array 0 :element-type 'character
-                           :fill-pointer 0
-                           :adjustable t)))
+  (let ((stream (make-string-output-stream)))
     (loop for c across str
           if (eq c #\Newline)
-          do (vector-push-extend #\\ tmp)
-             (vector-push-extend #\n tmp)
+          do (write-string "\\n" stream)
           else
-          do (vector-push-extend c tmp))
-    tmp))
+          do (write-char c stream))
+    (get-output-stream-string stream)))
 
 (defun escape-plist (plist)
   (loop with res = (list)
