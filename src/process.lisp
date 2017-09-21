@@ -12,10 +12,18 @@
 (in-package :cl-exercise.process)
 
 (defparameter +launch-darkmatter+
-  (if (= 0 (third (multiple-value-list (uiop:run-program "which darkmatter" :ignore-error-status t))))
-      "darkmatter"
-      (format nil "exec ~A"
-              (asdf:system-relative-pathname "darkmatter" #P"roswell/darkmatter.ros")))) 
+  (cond
+    ((= 0 (third (multiple-value-list (uiop:run-program "which darkmatter" :ignore-error-status t))))
+     "darkmatter")
+    ((= 0 (third (multiple-value-list (uiop:run-program "which ros" :ignore-error-status t))))
+     (format nil "exec ~A"
+             (asdf:system-relative-pathname "darkmatter" #P"roswell/darkmatter.ros")))
+    ((= 0 (third (multiple-value-list (uiop:run-program "which sbcl" :ignore-error-status t))))
+     (format nil "sbcl --load ~A --eval \"(darkmatter:start)\""
+             (asdf:system-relative-pathname "darkmatter" "darkmatter.asd")))
+    (t
+     (format t "Install roswell or sbcl~%")
+     (exit))))
 
 (defclass server-process ()
   ((entity :reader get-entity
