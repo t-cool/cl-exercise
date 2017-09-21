@@ -19,19 +19,31 @@
       }
     };
     const TITLE = "{{ question.data.name | safe }}";
-    const DESCRIPTION = "{{ question.data.content }}";
+    const DESCRIPTION = "{{ question.data.description }}";
+    const CONTENT = "{{ question.data.content }}";
     const HOST = "{{ host }}";
     const DEBUG = "{{ debug }}" === "T";
   </script>
   <script src="/static/main.js"></script>
 </head>
 <body>
+  <div class="modal">
+    <span class="modal-bg">
+      <span class="modal-window block">
+        <h1>正解!!</h1>
+        <a href="/">&lt;&lt;問題一覧へ戻る</a>
+      </span>
+    </span>
+  </div>
   <header>
     <h1>Lisp Tutor</h1>
   </header>
   <section class="center">
     <div id="desc-area" class="block">
       <span id="description"></span>
+    </div>
+    <div id="quest-area" class="block">
+      <span id="question"></span>
     </div>
     <div id="edit-area" class="block">
       <div id="editor" contenteditable="true" spellcheck="false"></div>
@@ -41,6 +53,7 @@
       <div id="eval-loader" class="loader center"><span>(</span><span>)</span></div>
       <div id="result"></div>
     </div>
+    <a href="/">&lt;&lt; 問題一覧へ戻る</a>
   </section>
 </body>
 </html>

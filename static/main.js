@@ -28,6 +28,8 @@ function send(code, resultElement, callback) {
              resultElement.innerHTML = `<p>戻り値:${result.returnValue}</p><pre>${result.output}</pre>`;
              if (checkCorrect(result.optional)) {
                resultElement.innerHTML += "<strong>正解</strong>";
+               let modalElement = document.querySelector(".modal");
+               modalElement.classList.add("show");
              }
            })
            .catch(err => {
@@ -57,9 +59,20 @@ function onclickEvalButton() {
   send(editor.innerText.trim(), result, () => loader.classList.remove("show"));
 }
 
+function onclickModalBg(e) {
+  if (e.target.classList.contains("modal-bg")) {
+    let modalElement = document.querySelector(".modal");
+    modalElement.classList.remove("show");
+  }
+}
+
 window.onload = () => {
+  let modalBgElement = document.querySelector(".modal-bg");
+  modalBgElement.onclick = onclickModalBg;
   let description = document.getElementById("description");
   description.innerHTML = marked("# "+TITLE+"\n"+DESCRIPTION);
+  let question = document.getElementById("question");
+  question.innerHTML = marked("## Exercise\n"+CONTENT);
   let editor = document.getElementById("editor");
   editor.innerText = ExerciseStorage.getAnswer(QUESTION_PATH);
   window.onbeforeunload = () => {
