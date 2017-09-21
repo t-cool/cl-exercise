@@ -30,7 +30,7 @@ $ ros install tamamu/cl-exercise
 $ cd ~/quicklisp/local-projects
 $ git clone -b refactor https://github.com/tamamu/darkmatter
 $ git clone https://github.com/tamamu/cl-exercise
-$ sbcl --eval "(progn (ql:quickload :cl-exercise)(exit))"
+$ sbcl --eval "(progn (ql:register-local-projects)(ql:quickload :cl-exercise)(exit))"
 ```
 
 ## See Also
