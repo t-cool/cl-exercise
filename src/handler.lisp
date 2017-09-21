@@ -127,7 +127,7 @@
                                          (make-server-process *server-table* id descripter)
                                          (go start))))
                    (let ((proc (get-proc *server-table* id descripter)))
-                     (if proc
+                     (if (and proc (uiop:process-alive-p (get-entity proc)))
                          (progn
                            (%log (format nil "Connect in port ~A" (get-port proc)))
                            (jsonrpc:client-connect *client*
