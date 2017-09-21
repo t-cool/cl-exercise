@@ -8,6 +8,8 @@ const initializeOptions =
 
 let client = new EvalClient(HOST, "user_id", "tutor");
 
+let codeMirror;
+
 let check = ExerciseStorage.getCheck(QUESTION_PATH);
 
 function send(code, resultElement, callback) {
@@ -56,7 +58,7 @@ function onclickEvalButton() {
   let loader = document.getElementById("eval-loader");
   result.innerHTML = "";
   loader.classList.add("show");
-  send(editor.innerText.trim(), result, () => loader.classList.remove("show"));
+  send(codeMirror.getValue().trim(), result, () => loader.classList.remove("show"));
 }
 
 function onclickModalBg(e) {
@@ -74,8 +76,14 @@ window.onload = () => {
   let question = document.getElementById("question");
   question.innerHTML = marked("## Exercise\n"+CONTENT);
   let editor = document.getElementById("editor");
-  editor.innerText = ExerciseStorage.getAnswer(QUESTION_PATH);
+  codeMirror = CodeMirror.fromTextArea(editor, {
+    mode: "commonlisp",
+    lineNumbers: true,
+    matchBrackets: true,
+    scrollbarStyle: null
+  });
+  codeMirror.setValue(ExerciseStorage.getAnswer(QUESTION_PATH));
   window.onbeforeunload = () => {
-    ExerciseStorage.setAnswer(QUESTION_PATH, editor.innerText);
+    ExerciseStorage.setAnswer(QUESTION_PATH, codeMirror.getValue());
   }
 }
