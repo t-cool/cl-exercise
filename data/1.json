@@ -9,7 +9,7 @@
   setqを使ってシンボルresultに2 + 3 * 4の計算結果を束縛しなさい．
   ",
   "prepare": "(defvar result nil)",
-  "test": "(= result (+ 2 (* 3 4)))",
+  "test": "(and (numberp result) (= result (+ 2 (* 3 4))))",
   "requirements": {
     "symbols": ["setq", "result"]
   }
