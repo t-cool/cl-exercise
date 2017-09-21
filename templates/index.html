@@ -37,7 +37,7 @@
         <tr class="clickable" onclick="location.href='/ex/{{ q.path }}'">
         <th>{{ forloop.counter }}</th>
         <td class="check" data-checked="false" data-check-id="{{ q.path }}"><span></span></td>
-        <td>{{ q.data.description }}</td>
+        <td>{{ q.data.purpose }}</td>
       </tr>
       {% endfor %}
     </table>
