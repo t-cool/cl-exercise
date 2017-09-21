@@ -19,8 +19,7 @@
      (format nil "exec ~A"
              (asdf:system-relative-pathname "darkmatter" #P"roswell/darkmatter.ros")))
     ((= 0 (third (multiple-value-list (uiop:run-program "which sbcl" :ignore-error-status t))))
-     (format nil "sbcl --load ~A --eval \"(darkmatter:start)\""
-             (asdf:system-relative-pathname "darkmatter" "darkmatter.asd")))
+     "sbcl --noinform --eval '(ql:quickload :darkmatter)' --eval '(darkmatter:start)'")
     (t
      (format t "Install roswell or sbcl~%")
      (exit))))
