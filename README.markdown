@@ -38,6 +38,7 @@ $ sbcl --eval "(progn (ql:register-local-projects)(ql:quickload :cl-exercise)(ex
 
 ## See Also
 
+* [CodeMirror](https://github.com/codemirror/codemirror) - In-browser code editor
 * [marked](https://github.com/chjj/marked) - A markdown parser and compiler
 
 ## Author

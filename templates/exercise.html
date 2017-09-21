@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>{{ question.data.name }} - Lisp Tutor</title>
   <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/codemirror.css">
   <script src="/static/marked.min.js"></script>
+  <script src="/static/codemirror.js"></script>
+  <script src="/static/commonlisp.js"></script>
   <script src="/static/Storage.js"></script>
   <script src="/static/HttpRequest.js"></script>
   <script src="/static/EvalClient.js"></script>
@@ -46,7 +49,7 @@
       <span id="question"></span>
     </div>
     <div id="edit-area" class="block">
-      <div id="editor" contenteditable="true" spellcheck="false"></div>
+      <textarea id="editor"></textarea>
     </div>
     <input id="eval-button" type="button" value="Check" onclick="onclickEvalButton();">
     <div id="result-area" class="block">
