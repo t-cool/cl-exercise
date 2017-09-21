@@ -1,10 +1,16 @@
 {
-  "name": "Q1",
-  "description": "変数への束縛を学ぶ",
-  "content": "appendを使ってxの末尾に3を追加しなさい．",
-  "prepare": "(defvar x (list 1 2))",
-  "test": "(equalp x '(1 2 3))",
+  "name": "Binding",
+  "purpose": "変数への束縛を学ぶ",
+  "description": "
+  **setq**はシンボルに値を束縛する特殊形式です．
+  ",
+  "content": "
+  いま，パッケージに**result**というシンボルが存在します．  
+  setqを使ってシンボルresultに2 + 3 * 4の計算結果を束縛しなさい．
+  ",
+  "prepare": "(defvar result nil)",
+  "test": "(= result (+ 2 (* 3 4)))",
   "requirements": {
-    "symbols": ["append", "x"]
+    "symbols": ["setq", "result"]
   }
 }

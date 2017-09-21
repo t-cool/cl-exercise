@@ -1,7 +1,13 @@
 {
-  "name": "Q2",
-  "description": "appendの使い方を学ぶ",
-  "content": "appendを使ってxの末尾に3を追加しなさい.\n\n戻り値で判定します．",
+  "name": "Append",
+  "purpose": "appendの使い方を学ぶ",
+  "description": "
+  **append**はリストとリストを結合する関数です.
+  ",
+  "content": "
+  いま，シンボル**x**にリスト(1 2)が代入されています．  
+  appendとxを使ってリスト(1 2 3)を作りなさい.
+  ",
   "prepare": "(defvar x (list 1 2))",
   "expect": "(lambda (x) (equalp x (list 1 2 3)))",
   "requirements": {
