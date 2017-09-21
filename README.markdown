@@ -7,6 +7,9 @@ Online Common Lisp Learning System
 ```lisp
 (require :cl-exercise)
 (cl-exercise:start :port 8000 :debug nil)
+
+;; Deployment
+(cl-exercise:start :host "http://example.com" :port 80)
 ```
 
 ## Installation
