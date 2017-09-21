@@ -140,6 +140,9 @@
                       method
                       (hash-table-plist params)))
         (force-output)
+        (when (string= method "darkmatter/initialize")
+          (setf (gethash "defaultPackage" (gethash "initializeOptions" params))
+                "(list :clex-user)"))
         (handler-case
           (let* ((result (jsonrpc:call *client* method params))
                  (json-string (encode-to-string result)))

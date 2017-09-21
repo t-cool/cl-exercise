@@ -50,4 +50,6 @@
   :components ((:module "plugin"
                 :components
                 ((:file "eval" :depends-on ("messages"))
-                 (:file "messages")))))
+                 (:file "messages")
+                 (:file "package")
+                 ))))
