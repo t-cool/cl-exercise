@@ -27,11 +27,13 @@ function send(code, resultElement, callback) {
              callback();
              let result = res.result;
              console.log(res);
-             resultElement.innerHTML = `<p>戻り値:${result.returnValue}</p><pre>${result.output}</pre>`;
+             const returnValueElement = `<blockquote>${result.returnValue}</blockquote>`;
+             const outputElement = `<pre>Output:${result.output}</pre>`;
+             resultElement.innerHTML = returnValueElement + outputElement;
              if (checkCorrect(result.optional)) {
                resultElement.innerHTML += "<strong>正解</strong>";
                let modalElement = document.querySelector(".modal");
-               modalElement.classList.add("show");
+               modalElement.classList.add("is-active");
              }
            })
            .catch(err => {
@@ -55,22 +57,23 @@ function checkCorrect(optional) {
 function onclickEvalButton() {
   let editor = document.getElementById("editor");
   let result = document.getElementById("result");
-  let loader = document.getElementById("eval-loader");
+  let button = document.getElementById("eval-button");
   result.innerHTML = "";
-  loader.classList.add("show");
-  send(codeMirror.getValue().trim(), result, () => loader.classList.remove("show"));
+  button.classList.add("is-loading");
+  button.blur();
+  send(codeMirror.getValue().trim(), result, () => button.classList.remove("is-loading"));
 }
 
-function onclickModalBg(e) {
-  if (e.target.classList.contains("modal-bg")) {
-    let modalElement = document.querySelector(".modal");
-    modalElement.classList.remove("show");
-  }
+function closeModal(e) {
+  let modalElement = document.querySelector(".modal");
+  modalElement.classList.remove("is-active");
 }
 
 window.onload = () => {
-  let modalBgElement = document.querySelector(".modal-bg");
-  modalBgElement.onclick = onclickModalBg;
+  let modalBgElement = document.querySelector(".modal-background");
+  let modalCloseButton = document.querySelector(".modal-close");
+  modalBgElement.onclick = closeModal;
+  modalCloseButton.onclick = closeModal;
   let description = document.getElementById("description");
   description.innerHTML = marked("# "+TITLE+"\n"+DESCRIPTION);
   let question = document.getElementById("question");
@@ -79,9 +82,12 @@ window.onload = () => {
   codeMirror = CodeMirror.fromTextArea(editor, {
     mode: "commonlisp",
     lineNumbers: true,
+    tabSize: 2,
     matchBrackets: true,
-    scrollbarStyle: null
+    autofocus: true,
+    viewportMargin: Infinity
   });
+  codeMirror.setSize("100%", "auto");
   codeMirror.setValue(ExerciseStorage.getAnswer(QUESTION_PATH));
   window.onbeforeunload = () => {
     ExerciseStorage.setAnswer(QUESTION_PATH, codeMirror.getValue());
