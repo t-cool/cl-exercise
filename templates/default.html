@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/bulma.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <section class="hero is-dark">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">
+          Lisp Tutor
+        </h1>
+      </div>
+    </div>
+  </section>
+  {% block content %}{% endblock%}
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Lisp Tutor</strong> by <a href="https://github.com/tamamu">Eddie</a>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        </p>
+        <p>
+          <a class="icon" href="https://github.com/tamamu/cl-exercise">
+            <i class="fa fa-github"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

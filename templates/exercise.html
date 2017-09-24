@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ question.data.name }} - Lisp Tutor</title>
-  <link rel="stylesheet" href="/static/style.css">
+{% extends "default.html" %}
+{% block title %}{{ question.data.name }} - Lisp Tutor{% endblock %}
+{% block head %}
   <link rel="stylesheet" href="/static/codemirror.css">
   <script src="/static/marked.min.js"></script>
   <script src="/static/codemirror.js"></script>
@@ -28,35 +25,45 @@
     const DEBUG = "{{ debug }}" === "T";
   </script>
   <script src="/static/main.js"></script>
-</head>
-<body>
+{% endblock %}
+{% block content %}
   <div class="modal">
-    <span class="modal-bg">
-      <span class="modal-window block">
-        <h1>正解!!</h1>
-        <a href="/">&lt;&lt;問題一覧へ戻る</a>
-      </span>
-    </span>
+    <div class="modal-background" style="background-color: rgba(0,0,0,0.5);"></div>
+    <div class="modal-content">
+      <article class="message is-success is-large">
+        <div class="message-header">
+          <p>正解</p>
+        </div>
+        <div class="message-body has-text-centered">
+          <a href="/">&lt;&lt;問題一覧へ戻る</a>
+        </div>
+      </article>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
   </div>
-  <header>
-    <h1>Lisp Tutor</h1>
-  </header>
-  <section class="center">
-    <div id="desc-area" class="block">
-      <span id="description"></span>
+  <section class="section">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div id="desc-area" class="box">
+          <div id="description" class="content"></div>
+        </div>
+        <div id="quest-area" class="box">
+          <div id="question" class="content"></div>
+        </div>
+        <div id="edit-area" class="box" style="padding: 0;">
+          <style>.CodeMirror-scroll{min-height: 150px;}</style>
+          <textarea id="editor"></textarea>
+        </div>
+        <div class="container has-text-centered">
+          <button id="eval-button" class="button is-primary is-outlined is-medium" onclick="onclickEvalButton();" style="margin-bottom: 1em;">Check</button>
+        </div>
+        <div id="result-area" class="box">
+          <div id="result" class="content"></div>
+        </div>
+        <div class="container has-text-centered">
+          <a href="/">&lt;&lt; 問題一覧へ戻る</a>
+        </div>
+      </div>
     </div>
-    <div id="quest-area" class="block">
-      <span id="question"></span>
-    </div>
-    <div id="edit-area" class="block">
-      <textarea id="editor"></textarea>
-    </div>
-    <input id="eval-button" type="button" value="Check" onclick="onclickEvalButton();">
-    <div id="result-area" class="block">
-      <div id="eval-loader" class="loader center"><span>(</span><span>)</span></div>
-      <div id="result"></div>
-    </div>
-    <a href="/">&lt;&lt; 問題一覧へ戻る</a>
   </section>
-</body>
-</html>
+{% endblock %}

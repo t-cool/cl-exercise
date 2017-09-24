@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>Lisp Tutor</title>
-  <link rel="stylesheet" href="/static/style.css">
+{% extends "default.html" %}
+{% block title %}Lisp Tutor{% endblock %}
+{% block head %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/bulma.css">
   <script src="/static/Storage.js"></script>
   <script>
     window.onpageshow = () => {
@@ -19,28 +18,42 @@
       }
     }
   </script>
-</head>
-<body>
-  <header>
-    <h1>Lisp Tutor</h1>
-  </header>
-  <section>
-    <table>
-      <caption>
-        <th>No.</th>
-        <td>Check</td>
-        <td>目標</td>
-      </caption>
-      <colgroup span="2"></colgroup>
-      <colgroup span="1" class="description"></colgroup>
-      {% for q in questions %}
-        <tr class="clickable" onclick="location.href='/ex/{{ q.path }}'">
-        <th>{{ forloop.counter }}</th>
-        <td class="check" data-checked="false" data-check-id="{{ q.path }}"><span></span></td>
-        <td>{{ q.data.purpose }}</td>
-      </tr>
-      {% endfor %}
-    </table>
+{% endblock %}
+{% block content %}
+  <section class="section">
+    <div class="container">
+    <style>
+      .clickable { cursor: pointer; }
+      .check span:before {
+        font-family: FontAwesome;
+      }
+      .check[data-checked="true"] span:before {
+        content: "\f14a";
+      }
+      .check[data-checked="false"] span:before {
+        content: "\f096";
+      }
+    </style>
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th class="is-narrow"><abbr title="Number">No.</abbr></th>
+              <th class="is-narrow">Check</th>
+              <th>目標</th>
+            </tr>
+          </thead>
+          <colgroup span="2"></colgroup>
+          <colgroup span="1" class="description"></colgroup>
+          <tbody>
+          {% for q in questions %}
+            <tr class="clickable" onclick="location.href='/ex/{{ q.path }}'">
+            <th>{{ forloop.counter }}</th>
+            <td class="check" data-checked="false" data-check-id="{{ q.path }}"><span></span></td>
+            <td>{{ q.data.purpose }}</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
   </section>
-</body>
-</html>
+{% endblock %}
