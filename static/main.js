@@ -28,7 +28,7 @@ function send(code, resultElement, callback) {
              let result = res.result;
              console.log(res);
              const returnValueElement = `<blockquote>${result.returnValue}</blockquote>`;
-             const outputElement = `<pre>Output:${result.output}</pre>`;
+             const outputElement = `<pre><strong>Output</strong>:\n${result.output}</pre>`;
              resultElement.innerHTML = returnValueElement + outputElement;
              if (checkCorrect(result.optional)) {
                resultElement.innerHTML += "<strong>正解</strong>";
