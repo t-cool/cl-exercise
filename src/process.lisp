@@ -49,23 +49,53 @@
       (gethash id proc-table))))
 
 (defun %parse-port-number (string)
-  (dotimes (index (length string))
-    (when (eq #\: (char string index))
-      (return (parse-integer string :start (1+ index) :junk-allowed t)))))
+  (if (and (< 0 (length string))
+           (eq #\# (char string 0)))
+      (parse-integer string :start 1 :junk-allowed t)))
+
+(defun %parse-failure (string)
+  (string= "#FAILURE" string))
+
+(defun %get-darkmatter-log-directory ()
+  (car (directory "/tmp/darkmatter*")))
+
+(defun %count-darkmatter-log-files ()
+  (let ((dir (%get-darkmatter-log-directory)))
+    (length (directory (format nil "~A*" dir)))))
+
+(defun %get-darkmatter-log-file ()
+  (let ((dir (%get-darkmatter-log-directory)))
+    (if (null dir)
+        nil
+        (let ((files (directory (format nil "~A*" dir))))
+          (car (last files))))))
 
 (defun make-server-process (tbl hostname id)
   (let* ((proc-table (gethash hostname tbl))
-         (out (make-array 0 :element-type 'character :adjustable t))
-         (entity (uiop:launch-program +launch-darkmatter+ :output :stream))
+         (log-count (%count-darkmatter-log-files))
+         (entity (uiop:launch-program +launch-darkmatter+))
+         (path nil)
          (port nil))
-    (loop for cnt from 0 below 50
-          until (numberp port)
-          do (format t ".")
-             (force-output)
-             (sleep 1)
-             (setf out (read-line (uiop:process-info-output entity)))
-             (setf port (%parse-port-number out)))
-    (fresh-line)
+    (loop for cnt from 0 below 10
+          until (< log-count (%count-darkmatter-log-files))
+          do (sleep 1)
+             (format t ".")
+             (force-output))
+    (terpri)
+    (setf path (%get-darkmatter-log-file))
+    (with-open-file (in path :direction :input)
+      (tagbody
+        start
+        (progn
+          (loop for line = (read-line in nil)
+                do (setf port (%parse-port-number line))
+                until (numberp port))
+          (when (let ((line (read-line in nil)))
+                  (and (stringp line)
+                       (%parse-failure line)))
+            (go start)))
+        finish))
+    (sleep 1)
     (setf (gethash id proc-table)
           (make-instance 'server-process :entity entity :port port))
     port))

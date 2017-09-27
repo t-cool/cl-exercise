@@ -121,21 +121,29 @@
   (if (null descripter)
       (emit-error id :invalid-params)
       (progn
-        (tagbody start
-                 (handler-bind ((error (lambda (c)
-                                         (format t "~A~%" c)
-                                         (make-server-process *server-table* id descripter)
-                                         (go start))))
-                   (let ((proc (get-proc *server-table* id descripter)))
-                     (if (and proc (uiop:process-alive-p (get-entity proc)))
-                         (progn
-                           (%log (format nil "Connect in port ~A" (get-port proc)))
-                           (jsonrpc:client-connect *client*
-                                                   :url (format nil "ws://127.0.0.1:~A" (get-port proc))
-                                                   :mode :websocket))
-                         (progn
-                           (make-server-process *server-table* id descripter)
-                           (go start))))))
+        (let ((proc (get-proc *server-table* id descripter)))
+          (if (and proc (uiop:process-alive-p (get-entity proc)))
+              (%log (format nil "Connected in port ~A" (get-port proc)))
+              (progn
+                (make-server-process *server-table* id descripter)
+                (setf proc (get-proc *server-table* id descripter))
+                (if (and proc (uiop:process-alive-p (get-entity proc)))
+                    (let ((connect-count 0))
+                      (%log (format nil "Connect in port ~A" (get-port proc)))
+                      (tagbody
+                        start
+                        (handler-case
+                          (jsonrpc:client-connect *client* :url (format nil "ws://127.0.0.1:~A" (get-port proc)) :mode :websocket)
+                          (usocket:connection-refused-error (c)
+                            (if (< 5 connect-count)
+                                (go finish)
+                                (progn
+                                  (format t "Connection refused.~%")
+                                  (sleep 1)
+                                  (format t "Retry(~A)...~%" (incf connect-count))
+                                  (go start)))))
+                        finish))
+                    (%log (format nil "Cannot make server"))))))
         (%log (format nil "Method ~A~%Params ~A"
                       method
                       (hash-table-plist params)))
@@ -144,19 +152,16 @@
           (setf (gethash "defaultPackage" (gethash "initializeOptions" params))
                 "(list :clex-user)"))
         (handler-case
-          (let* ((result (jsonrpc:call *client* method params))
+          (let* ((result (jsonrpc:call *client* method params :timeout 3.0))
                  (json-string (encode-to-string result)))
+            ;; process output
+            (force-output)
             (%log (format nil "Result ~A" (response-result id json-string)))
             `(200 (:content-type "application/json")
               (,(response-result id json-string))))
           (error (c)
                  (format t "# ERROR: ~A~%" c)
-                 (let ((entity (get-entity (get-proc *server-table* id descripter))))
-                   (loop for line = (read-line (uiop:process-info-output entity))
-                         while line
-                         do (format t "## ~A~%" line))
-                   (force-output)
-                   (exit)))))))
+                 (force-output))))))
 
 
 (defun encode-to-string (ht)
