@@ -21,4 +21,32 @@ class ExerciseStorage {
     let tmp = localStorage.getItem(real);
     return tmp ? tmp === "true" : false;
   }
+  static download() {
+    let text = JSON.stringify(localStorage);
+    window.open(`data:text/plain;charset=utf-8,${encodeURIComponent(text)}`, "_blank");
+  }
+  static restore(file, progress, callback = null) {
+    let reader = new FileReader();
+    reader.readAsText(file);
+    reader.onloadstart = () => {
+      progress.value = 0;
+      progress.textContent = "0%";
+    };
+    reader.onload = () => {
+      const json = JSON.parse(reader.result);
+      for (let key in json) {
+        localStorage.setItem(key, json[key]);
+      }
+      if (callback) callback();
+    };
+    reader.onprogress = (e) => {
+      if (e.lengthComputable) {
+        let percentLoaded = Math.round((e.loaded / e.total) * 100);
+        if (percentLoaded < 100) {
+          progress.value = percentLoaded;
+          progress.textContent = percentLoaded + '%';
+        }
+      }
+    };
+  }
 }
