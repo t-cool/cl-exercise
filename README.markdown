@@ -21,6 +21,8 @@ ASDF3 and Quicklisp have to be installed already.
 # FOR ROSWELL USER
 
 $ ros install asdf
+# Install latest jsonrpc
+$ ros install fukamachi/jsonrpc
 $ cd ~/lisp-local # ASDF source registry
 $ git clone -b refactor https://github.com/tamamu/darkmatter
 $ ros install tamamu/cl-exercise
@@ -31,6 +33,8 @@ $ ros install tamamu/cl-exercise
 
 # Please install ASDF3 before do below instructions
 $ cd ~/quicklisp/local-projects
+# Install latest jsonrpc
+$ git clone https://github.com/fukamachi/jsonrpc
 $ git clone -b refactor https://github.com/tamamu/darkmatter
 $ git clone https://github.com/tamamu/cl-exercise
 $ sbcl --eval "(progn (ql:register-local-projects)(ql:quickload :cl-exercise)(exit))"
