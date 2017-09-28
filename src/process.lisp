@@ -70,6 +70,9 @@
         (let ((files (directory (format nil "~A*" dir))))
           (car (last files))))))
 
+(define-condition darkmatter-log-file-not-found (error)
+  ((text :initarg :text :reader text)))
+
 (defun make-server-process (tbl hostname id)
   (let* ((proc-table (gethash hostname tbl))
          (log-count (%count-darkmatter-log-files))
@@ -83,21 +86,25 @@
              (force-output))
     (terpri)
     (setf path (%get-darkmatter-log-file))
-    (with-open-file (in path :direction :input)
-      (tagbody
-        start
+    (if (null path)
+        (error 'darkmatter-log-file-not-found
+               :text "Not found log file. Make sure work Darkmatter correctly.")
         (progn
-          (loop for line = (read-line in nil)
-                do (setf port (%parse-port-number line))
-                until (numberp port))
-          (when (let ((line (read-line in nil)))
-                  (and (stringp line)
-                       (%parse-failure line)))
-            (go start)))
-        finish))
-    (sleep 1)
-    (setf (gethash id proc-table)
-          (make-instance 'server-process :entity entity :port port))
+          (with-open-file (in path :direction :input)
+            (tagbody
+              start
+              (progn
+                (loop for line = (read-line in nil)
+                      do (setf port (%parse-port-number line))
+                      until (numberp port))
+                (when (let ((line (read-line in nil)))
+                        (and (stringp line)
+                             (%parse-failure line)))
+                  (go start)))
+              finish))
+          (sleep 1)
+          (setf (gethash id proc-table)
+                (make-instance 'server-process :entity entity :port port))))
     port))
 
 (defun delete-server-process-table (tbl)
