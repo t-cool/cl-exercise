@@ -34,6 +34,7 @@ class ExerciseStorage {
     };
     reader.onload = () => {
       const json = JSON.parse(reader.result);
+      localStorage.clear();
       for (let key in json) {
         localStorage.setItem(key, json[key]);
       }
