@@ -753,7 +753,7 @@
                 :rename-file
                 :rename-package
                 :replace
-                :require
+;                :require
                 :rest
                 :restart
                 :restart-bind
