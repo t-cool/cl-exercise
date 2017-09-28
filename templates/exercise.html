@@ -11,7 +11,7 @@
   <script>
     const QUESTION_PATH = "{{ question.path }}";
     const QUESTION = {
-      prepare: "{{ question.data.prepare | safe }}" || null,
+      prepare: "{{ question.data.prepare | safe }}" || "",
       test: {% if question.data.test %} "{{ question.data.test | safe }}" {% else %} null {% endif %},
       expect: {% if question.data.expect %} "{{ question.data.expect | safe }}" {% else %} null {% endif %},
       requirements: {
