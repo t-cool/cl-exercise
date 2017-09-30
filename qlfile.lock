@@ -5,9 +5,9 @@
 ("darkmatter" .
  (:class qlot.source.git:source-git
   :initargs (:project-name "darkmatter" :remote-url "https://github.com/tamamu/darkmatter.git" :branch "refactor")
-  :version "git-29a8476c35aa4608d9bbf3e14ddad53f4ea87559"
+  :version "git-1b632b9fe2c783c3ad7685f5db0c7d0fb1f9adcf"
   :remote-url "https://github.com/tamamu/darkmatter.git"
-  :ref "29a8476c35aa4608d9bbf3e14ddad53f4ea87559"))
+  :ref "1b632b9fe2c783c3ad7685f5db0c7d0fb1f9adcf"))
 ("websocket-driver" .
  (:class qlot.source.git:source-git
   :initargs (:project-name "websocket-driver" :remote-url "https://github.com/fukamachi/websocket-driver.git" :ref "a3046b11dfb9803ac3bff7734dd017390c2b54bb")
@@ -39,4 +39,8 @@
 ("yason" .
  (:class qlot.source.ql:source-ql
   :initargs (:project-name "yason" :%version :latest)
+  :version "ql-2017-08-30"))
+("cl-fad" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "cl-fad" :%version :latest)
   :version "ql-2017-08-30"))
