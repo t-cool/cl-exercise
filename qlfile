@@ -1,0 +1,9 @@
+git darkmatter https://github.com/tamamu/darkmatter.git :branch refactor
+git websocket-driver https://github.com/fukamachi/websocket-driver.git :ref a3046b11dfb9803ac3bff7734dd017390c2b54bb
+git jsonrpc https://github.com/fukamachi/jsonrpc :ref 766101b4ecbafb73490e1d84569f2dc64524fe42
+ql alexandria :latest
+ql clack :latest
+ql djula :latest
+ql quri :latest
+ql yason :latest
+

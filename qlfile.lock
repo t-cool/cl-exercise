@@ -1,0 +1,42 @@
+("quicklisp" .
+ (:class qlot.source.ql:source-ql-all
+  :initargs (:project-name "quicklisp" :%version :latest)
+  :version "2017-08-30"))
+("darkmatter" .
+ (:class qlot.source.git:source-git
+  :initargs (:project-name "darkmatter" :remote-url "https://github.com/tamamu/darkmatter.git" :branch "refactor")
+  :version "git-29a8476c35aa4608d9bbf3e14ddad53f4ea87559"
+  :remote-url "https://github.com/tamamu/darkmatter.git"
+  :ref "29a8476c35aa4608d9bbf3e14ddad53f4ea87559"))
+("websocket-driver" .
+ (:class qlot.source.git:source-git
+  :initargs (:project-name "websocket-driver" :remote-url "https://github.com/fukamachi/websocket-driver.git" :ref "a3046b11dfb9803ac3bff7734dd017390c2b54bb")
+  :version "git-a3046b11dfb9803ac3bff7734dd017390c2b54bb"
+  :remote-url "https://github.com/fukamachi/websocket-driver.git"
+  :ref "a3046b11dfb9803ac3bff7734dd017390c2b54bb"))
+("jsonrpc" .
+ (:class qlot.source.git:source-git
+  :initargs (:project-name "jsonrpc" :remote-url "https://github.com/fukamachi/jsonrpc" :ref "766101b4ecbafb73490e1d84569f2dc64524fe42")
+  :version "git-766101b4ecbafb73490e1d84569f2dc64524fe42"
+  :remote-url "https://github.com/fukamachi/jsonrpc"
+  :ref "766101b4ecbafb73490e1d84569f2dc64524fe42"))
+("alexandria" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "alexandria" :%version :latest)
+  :version "ql-2017-08-30"))
+("clack" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "clack" :%version :latest)
+  :version "ql-2017-08-30"))
+("djula" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "djula" :%version :latest)
+  :version "ql-2017-08-30"))
+("quri" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "quri" :%version :latest)
+  :version "ql-2017-08-30"))
+("yason" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "yason" :%version :latest)
+  :version "ql-2017-08-30"))
