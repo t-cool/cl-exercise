@@ -1,6 +1,7 @@
 {
   "name": "Binding",
   "purpose": "変数への束縛を学ぶ",
+  "media": "https://www.youtube.com/embed/HM1Zb3xmvMc",
   "description": "
   **setq**はシンボルに値を束縛する特殊形式です．
   ",

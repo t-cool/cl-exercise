@@ -1,6 +1,7 @@
 {
   "name": "Append",
   "purpose": "appendの使い方を学ぶ",
+  "media": "https://www.youtube.com/watch?v=e_Rih95korc",
   "description": "
   **append**はリストとリストを結合する関数です.
   ",
