@@ -1,4 +1,4 @@
-{% extends "default.html" %}
+{% extends "noheader.html" %}
 {% block title %}{{ question.data.name }} - Lisp Tutor{% endblock %}
 {% block head %}
   <link rel="stylesheet" href="/static/codemirror.css">
@@ -42,16 +42,16 @@
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
   </div>
+  <style>
+    #media-area{position:relative;padding-top:56.25%;margin-bottom:24px;}
+    #media-area .media{position:absolute;top:0;right:0;width:100% !important;height:100% !important;}
+  </style>
   <section class="section" style="flex: 1;">
     <div class="columns is-centered">
       <div class="column is-8">
+        <div id="media-area"></div>
         <div id="desc-area" class="box">
-          <style>
-            #media-area{position:relative;width:100%;padding-top:56.25%;}
-            #media-area .media{position:absolute;top:0;right:0;width:100% !important;height:100% !important;}
-          </style>
           <div id="title" class="content"></div>
-          <div id="media-area"></div>
           <div id="description" class="content"></div>
         </div>
         <div id="quest-area" class="box">
