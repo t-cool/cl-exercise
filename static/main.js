@@ -1,4 +1,8 @@
 
+const youtubeEmbedSchema = /^https:\/\/www\.youtube\.com\/embed\/.+/;
+const youtubeWatchSchema = /^https:\/\/www\.youtube\.com\/watch\?v=(.+)/;
+const slideshareSchema = /^\/\/www\.slideshare\.net\/slideshow\/embed_code\/key\/.+/;
+
 const initializeOptions =
   new InitializeOptions()
   .plugins(["cl-exercise"])
@@ -80,18 +84,23 @@ function createMediaIframe() {
 }
 
 function embedMedia(src) {
-  const youtubeEmbedSchema = /^https:\/\/www.youtube.com\/embed\/.+/;
-  const youtubeWatchSchema = /^https:\/\/www.youtube.com\/watch\?v=(.+)/;
   let mediaElement = document.getElementById("media-area");
   let watchSchemaResult = null;
   if (src.match(youtubeEmbedSchema)) {
     let frame = createMediaIframe();
+    mediaElement.classList.add("youtube")
     mediaElement.appendChild(frame);
     frame.src = src;
   } else if (watchSchemaResult = src.match(youtubeWatchSchema)) {
     let frame = createMediaIframe();
+    mediaElement.classList.add("youtube")
     mediaElement.appendChild(frame);
     frame.src = `https://www.youtube.com/embed/${watchSchemaResult[1]}`;
+  } else if (src.match(slideshareSchema)) {
+    let frame = createMediaIframe();
+    mediaElement.classList.add("slideshare");
+    mediaElement.appendChild(frame);
+    frame.src = src;
   } else {
     console.error("Unknown media");
   }
@@ -117,7 +126,7 @@ window.onload = () => {
     lineNumbers: true,
     tabSize: 2,
     matchBrackets: true,
-    autofocus: true,
+    autofocus: false,
     viewportMargin: Infinity
   });
   codeMirror.setSize("100%", "auto");
