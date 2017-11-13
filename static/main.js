@@ -69,13 +69,46 @@ function closeModal(e) {
   modalElement.classList.remove("is-active");
 }
 
+function createMediaIframe() {
+  let frame = document.createElement("iframe");
+  frame.classList.add("media");
+  frame.frameborder = "0";
+  frame.setAttribute("frameborder", "0")
+  frame.setAttribute("gesture", "media");
+  frame.setAttribute("allowfullscreen", "allowfullscreen")
+  return frame;
+}
+
+function embedMedia(src) {
+  const youtubeEmbedSchema = /^https:\/\/www.youtube.com\/embed\/.+/;
+  const youtubeWatchSchema = /^https:\/\/www.youtube.com\/watch\?v=(.+)/;
+  let mediaElement = document.getElementById("media-area");
+  let watchSchemaResult = null;
+  if (src.match(youtubeEmbedSchema)) {
+    let frame = createMediaIframe();
+    mediaElement.appendChild(frame);
+    frame.src = src;
+  } else if (watchSchemaResult = src.match(youtubeWatchSchema)) {
+    let frame = createMediaIframe();
+    mediaElement.appendChild(frame);
+    frame.src = `https://www.youtube.com/embed/${watchSchemaResult[1]}`;
+  } else {
+    console.error("Unknown media");
+  }
+}
+
 window.onload = () => {
+  if (QUESTION.media) {
+    embedMedia(QUESTION.media);
+  }
   let modalBgElement = document.querySelector(".modal-background");
   let modalCloseButton = document.querySelector(".modal-close");
   modalBgElement.onclick = closeModal;
   modalCloseButton.onclick = closeModal;
+  let title = document.getElementById("title");
+  title.innerHTML = marked("# "+TITLE);
   let description = document.getElementById("description");
-  description.innerHTML = marked("# "+TITLE+"\n"+DESCRIPTION);
+  description.innerHTML = marked(DESCRIPTION);
   let question = document.getElementById("question");
   question.innerHTML = marked("## Exercise\n"+CONTENT);
   let editor = document.getElementById("editor");
