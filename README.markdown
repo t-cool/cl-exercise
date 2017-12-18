@@ -5,7 +5,7 @@ Online Common Lisp Learning System
 ## Usage
 
 ```lisp
-(require :cl-exercise)
+(ql:quickload :cl-exercise)
 (cl-exercise:start :port 8000 :debug nil)
 
 ;; Deployment
@@ -23,6 +23,7 @@ ASDF3 and Quicklisp have to be installed already.
 $ ros install asdf
 # Install latest jsonrpc
 $ ros install fukamachi/jsonrpc
+$ ros install fukamachi/proc-parse
 $ cd ~/lisp-local # ASDF source registry
 $ git clone -b refactor https://github.com/tamamu/darkmatter
 $ ros install tamamu/cl-exercise
@@ -35,6 +36,7 @@ $ ros install tamamu/cl-exercise
 $ cd ~/quicklisp/local-projects
 # Install latest jsonrpc
 $ git clone https://github.com/fukamachi/jsonrpc
+$ git clone https://github.com/fukamachi/proc-parse
 $ git clone -b refactor https://github.com/tamamu/darkmatter
 $ git clone https://github.com/tamamu/cl-exercise
 $ sbcl --eval "(progn (ql:register-local-projects)(ql:quickload :cl-exercise)(exit))"
