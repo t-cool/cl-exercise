@@ -23,7 +23,6 @@ And then install qlot and trivial-mimes
 
 ```
 $ ros install fukamachi/qlot
-$ ros install Shinmera/trivial-mimes
 ```
 
 Now it's ready to install cl-exercise!
