@@ -9,6 +9,7 @@ Please install [Roswell](https://github.com/roswell/roswell) in advance.
 
 ```bash
 $ ros install fukamachi/qlot
+$ ros install Shinmera/trivial-mimes
 $ git clone https://github.com/t-cool/cl-exercise
 $ cd cl-exercise
 $ qlot install
