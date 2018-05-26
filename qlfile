@@ -8,3 +8,4 @@ ql djula :latest
 ql quri :latest
 ql yason :latest
 ql cl-fad :latest
+git trivial-mimes https://github.com/Shinmera/trivial-mimes.git :branch master

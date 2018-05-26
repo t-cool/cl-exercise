@@ -48,3 +48,9 @@
  (:class qlot.source.ql:source-ql
   :initargs (:project-name "cl-fad" :%version :latest)
   :version "ql-2018-04-30"))
+("trivial-mimes" .
+ (:class qlot.source.git:source-git
+  :initargs (:project-name "trivial-mimes" :remote-url "https://github.com/Shinmera/trivial-mimes.git" :branch "master")
+  :version "git-ebbf3672304febf6ff62bf50e18da45865d4a11a"
+  :remote-url "https://github.com/Shinmera/trivial-mimes.git"
+  :ref "ebbf3672304febf6ff62bf50e18da45865d4a11a"))
