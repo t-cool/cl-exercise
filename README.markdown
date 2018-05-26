@@ -2,6 +2,19 @@
 
 Online Common Lisp Learning System
 
+
+## Installation
+
+Please install [Roswell](https://github.com/roswell/roswell) in advance.
+
+```bash
+$ ros install fukamachi/qlot
+$ git clone https://github.com/t-cool/cl-exercise
+$ cd cl-exercise
+$ qlot install
+$ qlot exec ros -S . run
+```
+
 ## Usage
 
 ```lisp
@@ -10,36 +23,6 @@ Online Common Lisp Learning System
 
 ;; Deployment
 (cl-exercise:start :host "http://example.com" :port 80)
-```
-
-## Installation
-
-We recommend use [Roswell](https://github.com/roswell/roswell) to install.  
-ASDF3 and Quicklisp have to be installed already.
-
-```bash
-# FOR ROSWELL USER
-
-$ ros install asdf
-# Install latest jsonrpc
-$ ros install fukamachi/jsonrpc
-$ ros install fukamachi/proc-parse
-$ cd ~/lisp-local # ASDF source registry
-$ git clone -b refactor https://github.com/tamamu/darkmatter
-$ ros install tamamu/cl-exercise
-```
-
-```bash
-# FOR QUICKLISP USER
-
-# Please install ASDF3 before do below instructions
-$ cd ~/quicklisp/local-projects
-# Install latest jsonrpc
-$ git clone https://github.com/fukamachi/jsonrpc
-$ git clone https://github.com/fukamachi/proc-parse
-$ git clone -b refactor https://github.com/tamamu/darkmatter
-$ git clone https://github.com/tamamu/cl-exercise
-$ sbcl --eval "(progn (ql:register-local-projects)(ql:quickload :cl-exercise)(exit))"
 ```
 
 ## See Also
@@ -54,7 +37,7 @@ $ sbcl --eval "(progn (ql:register-local-projects)(ql:quickload :cl-exercise)(ex
 
 ## Copyright
 
-Copyright (c) 2017 Eddie, Noguchi Hiroki
+Copyright (c) 2018 Eddie, t-cool
 
 ## License
 
