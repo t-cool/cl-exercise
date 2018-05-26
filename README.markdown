@@ -5,11 +5,27 @@ Online Common Lisp Learning System
 
 ## Installation
 
-Please install [Roswell](https://github.com/roswell/roswell) in advance.
+In advance, please install [Roswell](https://github.com/roswell/roswell).
 
-```bash
+You can refer to this document for its installation:[Roswell Installation Guide](https://github.com/roswell/roswell/wiki/Installation)
+
+
+And please add the following line to `~/.bashrc` or `~/.bash_profile` to add `~/.roswell/bin` to PATH.
+
+```
+export PATH=$PATH:~/.roswell/bin
+```
+
+And then install qlot and trivial-mimes 
+
+```
 $ ros install fukamachi/qlot
 $ ros install Shinmera/trivial-mimes
+```
+
+Now it's ready to install cl-exercise!
+
+```
 $ git clone https://github.com/t-cool/cl-exercise
 $ cd cl-exercise
 $ qlot install
