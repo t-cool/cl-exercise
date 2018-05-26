@@ -1,0 +1,64 @@
+# Cl-exercise
+
+Online Common Lisp Learning System
+
+![image](https://github.com/t-cool/clexercise/blob/master/screenshot/img.png)
+
+## Installation
+
+In advance, please install [Roswell](https://github.com/roswell/roswell).
+
+You can refer to this document for its installation:
+
+[Roswell Installation Guide](https://github.com/roswell/roswell/wiki/Installation)
+
+
+Please add the following line to `~/.bashrc` or `~/.bash_profile` to add `~/.roswell/bin` to PATH.
+
+```
+export PATH=$PATH:~/.roswell/bin
+```
+
+And then install qlot and trivial-mimes 
+
+```
+$ ros install fukamachi/qlot
+$ ros install Shinmera/trivial-mimes
+```
+
+Now it's ready to install cl-exercise!
+
+```
+$ git clone https://github.com/t-cool/cl-exercise
+$ cd cl-exercise
+$ qlot install
+$ qlot exec ros -S . run
+```
+
+## Usage
+
+```lisp
+(ql:quickload :cl-exercise)
+(cl-exercise:start :port 8000 :debug nil)
+
+;; Deployment
+(cl-exercise:start :host "http://example.com" :port 80)
+```
+
+## See Also
+
+* [Bulma](https://github.com/jgthms/bulma) - Modern CSS framework based on Flexbox
+* [CodeMirror](https://github.com/codemirror/codemirror) - In-browser code editor
+* [marked](https://github.com/chjj/marked) - A markdown parser and compiler
+
+## Author
+
+* Eddie, t-cool
+
+## Copyright
+
+Copyright (c) 2018 Eddie, t-cool
+
+## License
+
+Licensed under the MIT License.
