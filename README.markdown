@@ -7,10 +7,12 @@ Online Common Lisp Learning System
 
 In advance, please install [Roswell](https://github.com/roswell/roswell).
 
-You can refer to this document for its installation:[Roswell Installation Guide](https://github.com/roswell/roswell/wiki/Installation)
+You can refer to this document for its installation:
+
+[Roswell Installation Guide](https://github.com/roswell/roswell/wiki/Installation)
 
 
-And please add the following line to `~/.bashrc` or `~/.bash_profile` to add `~/.roswell/bin` to PATH.
+Please add the following line to `~/.bashrc` or `~/.bash_profile` to add `~/.roswell/bin` to PATH.
 
 ```
 export PATH=$PATH:~/.roswell/bin
