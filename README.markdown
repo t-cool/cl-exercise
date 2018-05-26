@@ -2,7 +2,7 @@
 
 Common Lisp  Online Learning System
 
-![image](https://github.com/t-cool/cl-exercise/blob/master/screenshot/img.png)
+![image](https://github.com/t-cool/cl-exercise/blob/master/screenshot/image.png)
 
 ## Installation
 
@@ -37,11 +37,12 @@ $ qlot exec ros -S . run
 ## Usage
 
 ```lisp
-(ql:quickload :cl-exercise)
-(cl-exercise:start :port 8000 :debug nil)
+$ ros run
+* (ql:quickload :cl-exercise)
+* (cl-exercise:start :port 8000 :debug nil)
 
 ;; Deployment
-(cl-exercise:start :host "http://example.com" :port 80)
+* (cl-exercise:start :host "http://example.com" :port 80)
 ```
 
 ## See Also
