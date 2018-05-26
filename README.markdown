@@ -38,7 +38,7 @@ $ qlot exec ros -S . run
 ## Usage
 
 ```lisp
-$ ros run
+$ qlot exec ros -S . run
 * (ql:quickload :cl-exercise)
 * (cl-exercise:start :port 8000 :debug nil)
 
