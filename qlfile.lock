@@ -23,28 +23,28 @@
 ("proc-parse" .
  (:class qlot.source.ql:source-ql
   :initargs (:project-name "proc-parse" :%version :latest)
-  :version "ql-2017-11-30"))
+  :version "ql-2018-04-30"))
 ("alexandria" .
  (:class qlot.source.ql:source-ql
   :initargs (:project-name "alexandria" :%version :latest)
-  :version "ql-2017-11-30"))
+  :version "ql-2018-04-30"))
 ("clack" .
  (:class qlot.source.ql:source-ql
   :initargs (:project-name "clack" :%version :latest)
-  :version "ql-2017-11-30"))
+  :version "ql-2018-04-30"))
 ("djula" .
  (:class qlot.source.ql:source-ql
   :initargs (:project-name "djula" :%version :latest)
-  :version "ql-2017-11-30"))
+  :version "ql-2018-04-30"))
 ("quri" .
  (:class qlot.source.ql:source-ql
   :initargs (:project-name "quri" :%version :latest)
-  :version "ql-2017-11-30"))
+  :version "ql-2018-04-30"))
 ("yason" .
  (:class qlot.source.ql:source-ql
   :initargs (:project-name "yason" :%version :latest)
-  :version "ql-2017-11-30"))
+  :version "ql-2018-04-30"))
 ("cl-fad" .
  (:class qlot.source.ql:source-ql
   :initargs (:project-name "cl-fad" :%version :latest)
-  :version "ql-2017-11-30"))
+  :version "ql-2018-04-30"))

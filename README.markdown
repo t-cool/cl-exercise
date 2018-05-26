@@ -1,7 +1,8 @@
-# Cl-Exercise
+# Cl-exercise
 
 Online Common Lisp Learning System
 
+![image](https://github.com/t-cool/clexercise/blob/master/screenshot/img.png)
 
 ## Installation
 
@@ -33,7 +34,7 @@ $ qlot exec ros -S . run
 
 ## Author
 
-* Eddie, Noguchi Hiroki
+* Eddie, t-cool
 
 ## Copyright
 
