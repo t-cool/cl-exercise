@@ -1,4 +1,4 @@
-# Cl-Exercise
+# cl-exercise
 
 Online Common Lisp Learning System
 
@@ -33,7 +33,7 @@ $ qlot exec ros -S . run
 
 ## Author
 
-* Eddie, Noguchi Hiroki
+* Eddie, t-cool
 
 ## Copyright
 
