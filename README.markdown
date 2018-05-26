@@ -1,6 +1,4 @@
-# cl-exercise
-
-Online Common Lisp Learning System
+# cl-exercise: Common Lisp  Online Learning System
 
 ![image](https://github.com/t-cool/cl-exercise/blob/master/screenshot/img.png)
 
