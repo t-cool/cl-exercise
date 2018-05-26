@@ -19,7 +19,7 @@ Please add the following line to `~/.bashrc` or `~/.bash_profile` to add `~/.ros
 export PATH=$PATH:~/.roswell/bin
 ```
 
-And then install qlot and trivial-mimes 
+And then install qlot
 
 ```
 $ ros install fukamachi/qlot
