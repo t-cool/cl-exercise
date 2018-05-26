@@ -3,11 +3,11 @@
   "purpose": "シンボルに値を代入する",
   "media": "https://www.youtube.com/embed/HM1Zb3xmvMc",
   "description": "
-  **setq**はシンボルに値を代入します。
+  **setq**
   ",
   "content": "
-  いま，パッケージに**result**というシンボルが存在します．  
-  setqを使って、シンボルresultに2 + 3 * 4の計算結果を代入しなさい．
+  いま，パッケージに**result**というシンボルが存在します．
+  setqを使って、シンボルresultに2 + 3 * 4の計算結果を代入してください．
   ",
   "prepare": "(defvar result nil)",
   "test": "(and (numberp result) (= result (+ 2 (* 3 4))))",
