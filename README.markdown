@@ -1,8 +1,8 @@
-# Cl-exercise
+# cl-exercise
 
 Online Common Lisp Learning System
 
-![image](https://github.com/t-cool/clexercise/blob/master/screenshot/img.png)
+![image](https://github.com/t-cool/cl-exercise/blob/master/screenshot/img.png)
 
 ## Installation
 
