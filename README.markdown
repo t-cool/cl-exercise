@@ -52,7 +52,7 @@ $ qlot exec ros -S . run
 
 ## Author
 
-* Eddie, t-cool
+Eddie, t-cool
 
 ## Copyright
 
