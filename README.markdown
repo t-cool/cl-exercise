@@ -2,8 +2,6 @@
 
 Common Lisp  Online Learning System
 
-![image](https://github.com/t-cool/cl-exercise/blob/master/screenshot/img.png)
-
 ## Installation
 
 In advance, please install [Roswell](https://github.com/roswell/roswell).
