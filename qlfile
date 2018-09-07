@@ -1,4 +1,3 @@
-git darkmatter https://github.com/tamamu/darkmatter.git :branch refactor
 git websocket-driver https://github.com/fukamachi/websocket-driver.git :ref a3046b11dfb9803ac3bff7734dd017390c2b54bb
 git fast-http https://github.com/fukamachi/fast-http.git :ref f9e7597191bae380503e20724fd493a24d024935
 git jsonrpc https://github.com/fukamachi/jsonrpc :ref 766101b4ecbafb73490e1d84569f2dc64524fe42
