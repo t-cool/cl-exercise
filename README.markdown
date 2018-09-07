@@ -18,9 +18,7 @@ brew install libev
 
 - Roswell
 
-Please follow [Roswell Installation Guide](https://github.com/roswell/roswell/wiki/Installation).
-
-Then add the PATH to `ros` command.
+Please follow [Roswell Installation Guide](https://github.com/roswell/roswell/wiki/Installation), and then add the PATH to `ros` command.
 
 ```
 echo "export PATH=\"\$HOME/.roswell/bin:\$PATH\"" >> ~/.bash_profile
