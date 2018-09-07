@@ -14,6 +14,12 @@
   :version "git-a3046b11dfb9803ac3bff7734dd017390c2b54bb"
   :remote-url "https://github.com/fukamachi/websocket-driver.git"
   :ref "a3046b11dfb9803ac3bff7734dd017390c2b54bb"))
+("fast-http" .
+ (:class qlot.source.git:source-git
+  :initargs (:project-name "fast-http" :remote-url "https://github.com/fukamachi/fast-http.git" :ref "f9e7597191bae380503e20724fd493a24d024935")
+  :version "git-f9e7597191bae380503e20724fd493a24d024935"
+  :remote-url "https://github.com/fukamachi/fast-http.git"
+  :ref "f9e7597191bae380503e20724fd493a24d024935"))
 ("jsonrpc" .
  (:class qlot.source.git:source-git
   :initargs (:project-name "jsonrpc" :remote-url "https://github.com/fukamachi/jsonrpc" :ref "766101b4ecbafb73490e1d84569f2dc64524fe42")
