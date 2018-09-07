@@ -1,0 +1,17 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#| <Put a one-line description here>
+exec ros -Q -- $0 "$@"
+|#
+(progn ;;init forms
+  (unless (find-package :darkmatter)
+    (ql:quickload "darkmatter")))
+
+(defpackage :ros.script.darkmatter.3711117109
+  (:use :cl))
+(in-package :ros.script.darkmatter.3711117109)
+
+(defun main (&rest argv)
+  (declare (ignorable argv))
+  (apply #'darkmatter:start argv))
+;;; vim: set ft=lisp lisp:
