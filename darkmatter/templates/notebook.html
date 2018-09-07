@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script src="/static/HttpRequest.js"></script>
+  <script src="/static/EvalClient.js"></script>
+  <script>
+    const TOKEN = "8Pubhf8XQcI=";
+    const DESCRIPTER = "{{ token }}:{{ path }}";
+    let c = new EvalClient(`http://${SERVER_HOST}:{{ port }}`, TOKEN, DESCRIPTER);
+    let code = "(print *package*)";
+    c.eval(code, "cell2")
+     .then(result => console.log(result))
+     .catch(err => console.log(err));
+  </script>
+</body>
+</html>
