@@ -23,6 +23,7 @@ And then install qlot
 
 ```
 $ ros install fukamachi/qlot
+$ ros install fukamachi/fast-http
 ```
 
 Now it's ready to install cl-exercise!
