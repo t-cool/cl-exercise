@@ -8,28 +8,33 @@ Common Lisp Online Learning System
 
 macOS High Sierra
 
-## Installation
+## Requirement
 
-In advance, please install [Roswell](https://github.com/roswell/roswell).
+- Libev
 
-You can refer to this document for its installation:
+```bash
+brew install libev
+```
+
+- Roswell
+
+Please follow the installation guide:
 
 [Roswell Installation Guide](https://github.com/roswell/roswell/wiki/Installation)
 
-
-Please add the following line to `~/.bashrc` or `~/.bash_profile` to add `~/.roswell/bin` to PATH.
+Then add the PATH to `ros` command.
 
 ```
-export PATH=$PATH:~/.roswell/bin
+echo "export PATH=\"\$HOME/.roswell/bin:\$PATH\"" >> ~/.bash_profile
 ```
 
-And then install qlot
+- Qlot
 
 ```
 $ ros install fukamachi/qlot
 ```
 
-Now it's ready to install cl-exercise!
+## Installation
 
 ```
 $ ros install t-cool/cl-exercise
