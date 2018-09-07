@@ -28,9 +28,8 @@ $ ros install fukamachi/qlot
 Now it's ready to install cl-exercise!
 
 ```
-$ cd ~/.roswell/local-projects
-$ git clone https://github.com/t-cool/cl-exercise
-$ cd cl-exercise
+$ ros install t-cool/cl-exercise
+$ cd ~/.roswell/local-projects/cl-exercise
 $ qlot install
 $ qlot exec ros -S . run
 ```
