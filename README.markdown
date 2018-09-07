@@ -27,7 +27,6 @@ And then install qlot
 
 ```
 $ ros install fukamachi/qlot
-$ ros install fukamachi/fast-http
 ```
 
 Now it's ready to install cl-exercise!
@@ -46,16 +45,16 @@ $ qlot exec ros -S . run
 * (ql:quickload :cl-exercise)
 * (cl-exercise:start :port 8000 :debug nil)
 
-;; Deployment
-* (cl-exercise:start :host "http://example.com" :port 80)
+;; Development / Publishing
+* (cl-exercise:start :host "http://[GLOBAL_IP_ADDRESS]" :port 80)
 ```
 
 ## See Also
 
+* [Darkmatter](https://github.com/tamamu/darkmatter) - The notebook-style Common Lisp environment
 * [Bulma](https://github.com/jgthms/bulma) - Modern CSS framework based on Flexbox
 * [CodeMirror](https://github.com/codemirror/codemirror) - In-browser code editor
 * [marked](https://github.com/chjj/marked) - A markdown parser and compiler
-* [darkmatter](https://github.com/tamamu/darkmatter) - The notebook-style Common Lisp environment
 
 
 ## Author
