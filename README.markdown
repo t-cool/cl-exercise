@@ -29,7 +29,7 @@ Now it's ready to install cl-exercise!
 
 ```
 $ ros install t-cool/cl-exercise
-$ cd ~/.roswell/local-projects/cl-exercise
+$ cd ~/.roswell/local-projects/t-cool/cl-exercise
 $ qlot install
 $ qlot exec ros -S . run
 ```
