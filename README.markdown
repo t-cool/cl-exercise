@@ -4,6 +4,10 @@ Common Lisp  Online Learning System
 
 ![image](https://raw.githubusercontent.com/t-cool/cl-exercise/master/screenshot/img.png)
 
+## Platform
+
+macOS High Sierra
+
 ## Installation
 
 In advance, please install [Roswell](https://github.com/roswell/roswell).
