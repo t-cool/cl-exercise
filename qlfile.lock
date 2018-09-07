@@ -1,0 +1,56 @@
+("quicklisp" .
+ (:class qlot.source.ql:source-ql-all
+  :initargs (:distribution "http://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "2018-08-31"))
+("websocket-driver" .
+ (:class qlot.source.git:source-git
+  :initargs (:project-name "websocket-driver" :remote-url "https://github.com/fukamachi/websocket-driver.git" :ref "a3046b11dfb9803ac3bff7734dd017390c2b54bb")
+  :version "git-a3046b11dfb9803ac3bff7734dd017390c2b54bb"
+  :remote-url "https://github.com/fukamachi/websocket-driver.git"
+  :ref "a3046b11dfb9803ac3bff7734dd017390c2b54bb"))
+("fast-http" .
+ (:class qlot.source.git:source-git
+  :initargs (:project-name "fast-http" :remote-url "https://github.com/fukamachi/fast-http.git" :ref "f9e7597191bae380503e20724fd493a24d024935")
+  :version "git-f9e7597191bae380503e20724fd493a24d024935"
+  :remote-url "https://github.com/fukamachi/fast-http.git"
+  :ref "f9e7597191bae380503e20724fd493a24d024935"))
+("jsonrpc" .
+ (:class qlot.source.git:source-git
+  :initargs (:project-name "jsonrpc" :remote-url "https://github.com/fukamachi/jsonrpc" :ref "766101b4ecbafb73490e1d84569f2dc64524fe42")
+  :version "git-766101b4ecbafb73490e1d84569f2dc64524fe42"
+  :remote-url "https://github.com/fukamachi/jsonrpc"
+  :ref "766101b4ecbafb73490e1d84569f2dc64524fe42"))
+("proc-parse" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "proc-parse" :distribution "http://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "ql-2018-08-31"))
+("alexandria" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "alexandria" :distribution "http://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "ql-2018-08-31"))
+("clack" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "clack" :distribution "http://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "ql-2018-08-31"))
+("djula" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "djula" :distribution "http://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "ql-2018-08-31"))
+("quri" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "quri" :distribution "http://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "ql-2018-08-31"))
+("yason" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "yason" :distribution "http://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "ql-2018-08-31"))
+("cl-fad" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "cl-fad" :distribution "http://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "ql-2018-08-31"))
+("trivial-mimes" .
+ (:class qlot.source.git:source-git
+  :initargs (:project-name "trivial-mimes" :remote-url "https://github.com/Shinmera/trivial-mimes.git" :branch "master")
+  :version "git-303f8ac0aa6ca0bc139aa3c34822e623c3723fab"
+  :remote-url "https://github.com/Shinmera/trivial-mimes.git"
+  :ref "303f8ac0aa6ca0bc139aa3c34822e623c3723fab"))
