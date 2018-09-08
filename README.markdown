@@ -33,8 +33,11 @@ $ ros install fukamachi/qlot
 ## Installation
 
 ```
+# install cl-exercise
 $ ros install t-cool/cl-exercise
 $ cd ~/.roswell/local-projects/t-cool/cl-exercise && qlot install
+
+# Execute a command with a project-local Quicklisp
 $ qlot exec ros -S . run
 ```
 
