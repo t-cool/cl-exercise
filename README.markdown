@@ -69,7 +69,7 @@ You can add your own lessons. The format is as bellow:
 
  - `requirements`: the list of the symbols that have to be inside the code
  
-This is an example of the lesson. 
+This is an example of lessons. 
 
 ```json
 {
