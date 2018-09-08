@@ -43,7 +43,7 @@ $ qlot exec ros -S . run
 
 ## Usage
 
-To escape from the issues deriving from library dependencies, we'll use `qlot`.  We need to change a directory to the project folder. After that, typing `qlot exec ros -S . run` will load the libraries from the quicklisp folder inside the project directory.
+To escape from the issues deriving from library dependencies, we'll use `qlot`.  We need to change a directory to the project folder. Then typing `qlot exec ros -S . run` will load the libraries from the quicklisp folder inside the project directory.
 
 ```lisp
 # change a directory to the project
