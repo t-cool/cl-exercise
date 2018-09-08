@@ -41,6 +41,7 @@ $ qlot exec ros -S . run
 ## Usage
 
 ```lisp
+$ cd ~/.roswell/local-projects/t-cool/cl-exercise
 $ qlot exec ros -S . run
 * (ql:quickload :cl-exercise)
 * (cl-exercise:start :port 8000 :debug nil)
