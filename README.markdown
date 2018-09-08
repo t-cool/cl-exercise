@@ -43,9 +43,16 @@ $ qlot exec ros -S . run
 
 ## Usage
 
+To escape from the issues deriving from library dependencies, we'll use `qlot`.  We need to change a directory to the project folder. After that, typing `qlot exec ros -S . run` will load the libraries from the quicklisp folder inside the project directory.
+
 ```lisp
+# change a directory to the project
 $ cd ~/.roswell/local-projects/t-cool/cl-exercise
+
+# load the libraries from `quicklisp` folder inside the project
 $ qlot exec ros -S . run
+
+# load the system and start the server
 * (ql:quickload :cl-exercise)
 * (cl-exercise:start :port 8000 :debug nil)
 
@@ -53,7 +60,7 @@ $ qlot exec ros -S . run
 * (cl-exercise:start :host "http://[GLOBAL_IP_ADDRESS]" :port 80)
 ```
 
-## Adding 
+## Adding lessons
 
 The files of lessons are inside `data` directory in JSON format.
 
