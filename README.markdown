@@ -49,7 +49,7 @@ $ qlot exec ros -S . run
 * (cl-exercise:start :host "http://[GLOBAL_IP_ADDRESS]" :port 80)
 ```
 
-## Adding Data
+## Adding 
 
 The files of lessons are inside `data` directory in JSON format.
 
