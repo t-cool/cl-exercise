@@ -53,9 +53,7 @@ $ qlot exec ros -S . run
 
 The files of lessons are inside `data` directory in JSON format.
 
-You can add your own lessons. 
-
-The format is as bellow:
+You can add your own lessons. The format is as bellow:
 
  - `name`: lesson's name
 
