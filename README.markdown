@@ -6,9 +6,15 @@ Common Lisp Online Learning System
 
 ## To do
 
-- add saving mode
+- ~~to add evaluating answers function~~
 
-- add lesson plans (base on cl-cookbook)
+- ~~to embed an editor (Codemirror)~~
+
+- ~~to make a table of lessons~~
+
+- to add saving mode
+
+- to add lesson plans (base on cl-cookbook)
 
 ## Platform
 
