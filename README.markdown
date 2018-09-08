@@ -49,6 +49,48 @@ $ qlot exec ros -S . run
 * (cl-exercise:start :host "http://[GLOBAL_IP_ADDRESS]" :port 80)
 ```
 
+## Adding Data
+
+The files of lessons are inside `data` directory in JSON format.
+
+You can add your own lessons. 
+
+The format is as bellow:
+
+ - `name`: lesson's name
+
+ - `purpose`: lesson's purpose
+
+ - `media`: the link to videos or presentation slides
+
+ - `description`: the head title of the lesson page
+
+ - `content`: explanation
+ 
+ - `test`: the test function to check the answer
+
+ - `requirements`: the list of the symbols that have to be inside the code
+ 
+This is an example of the lesson. 
+
+```json
+{
+  "name": "setf",
+  "purpose": "The purpose of the lesson",
+  "media": "https://www.youtube.com/embed/HM1Zb3xmvMc",
+  "description": "**setq**",
+  "content": "
+  いま，パッケージに**result**というシンボルが存在します．
+  setqを使って、シンボルresultに2 + 3 * 4の計算結果を代入してください．
+  ",
+  "prepare": "(defvar result nil)",
+  "test": "(and (numberp result) (= result (+ 2 (* 3 4))))",
+  "requirements": {
+    "symbols": ["setq", "result"]
+  }
+}
+```
+
 ## See Also
 
 * [Darkmatter](https://github.com/tamamu/darkmatter) - The notebook-style Common Lisp environment
