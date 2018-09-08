@@ -4,6 +4,12 @@ Common Lisp Online Learning System
 
 ![image](https://raw.githubusercontent.com/t-cool/cl-exercise/master/screenshot/img.png)
 
+## To do
+
+- add saving mode
+
+- add lesson plans (base on cl-cookbook)
+
 ## Platform
 
 macOS High Sierra
