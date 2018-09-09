@@ -54,7 +54,7 @@ $ qlot exec ros -S . run
 ```
 
 ## Usage
-To avoid dependency problems when developing software, we'll use `qlot`.  
+To avoid dependency problems, we'll use `qlot`.  
 
 We need to change a directory to the project folder. 
 
