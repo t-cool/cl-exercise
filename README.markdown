@@ -56,9 +56,9 @@ $ qlot exec ros -S . run
 ## Usage
 To avoid dependency problems, we'll use `qlot`.  
 
-We need to change a directory to the project folder. 
+First, We need to change a directory to the project folder. 
 
-Then typing `qlot exec ros -S . run` will load libraries from `quicklisp` inside the project folder.
+Then, typing `qlot exec ros -S . run` will load libraries from `quicklisp` inside the project folder.
 
 ```lisp
 # change a directory to the project
