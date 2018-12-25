@@ -1,13 +1,12 @@
 {
   "name": "Append",
-  "purpose": "appendの使い方を学ぶ",
+  "purpose": "append",
   "media": "//www.slideshare.net/slideshow/embed_code/key/9xgeGAwsNYC0zk",
   "description": "
-  **append**はリストとリストを結合する関数です.
+  **append** concatenates lists.
   ",
   "content": "
-  いま，シンボル**x**にリスト(1 2)が代入されています．  
-  appendとxを使ってリスト(1 2 3)を作りなさい.
+  Please append **x** and '(3).
   ",
   "prepare": "(defvar x (list 1 2))",
   "expect": "(lambda (x) (equalp x (list 1 2 3)))",
