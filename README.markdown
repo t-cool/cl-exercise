@@ -2,7 +2,7 @@
 
 Common Lisp Online Learning System
 
-![screenshot](screenshot.png)
+![screenshot](screenshot/screenshot.png)
 
 ## To do
 
