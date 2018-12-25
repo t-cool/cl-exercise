@@ -2,7 +2,7 @@
 
 Common Lisp Online Learning System
 
-![image](https://raw.githubusercontent.com/t-cool/cl-exercise/master/screenshot/img.png)
+![screenshot](screenshot.png)
 
 ## To do
 
@@ -96,7 +96,7 @@ Eddie, t-cool
 
 ## Copyright
 
-Copyright (c) 2018 Eddie, t-cool
+Copyright (c) 2019 Eddie, t-cool
 
 ## License
 
