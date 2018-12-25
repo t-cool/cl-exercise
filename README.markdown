@@ -18,14 +18,18 @@ Common Lisp Online Learning System
 
 ## Platform
 
-macOS High Sierra
+macOS High Sierra, Ubuntu
 
 ## Requirement
 
 - Libev
 
 ```bash
+# macOS
 brew install libev
+
+# Ubuntu
+apt install libev-dev
 ```
 
 - Roswell
@@ -36,37 +40,14 @@ Please follow [Roswell Installation Guide](https://github.com/roswell/roswell/wi
 echo "export PATH=\"\$HOME/.roswell/bin:\$PATH\"" >> ~/.bash_profile
 ```
 
-- Qlot
-
-```
-$ ros install fukamachi/qlot
-```
-
 ## Installation
 
 ```
-# install cl-exercise
 $ ros install t-cool/cl-exercise
-$ cd ~/.roswell/local-projects/t-cool/cl-exercise && qlot install
-
-# Execute a command with a project-local Quicklisp
-$ qlot exec ros -S . run
 ```
 
 ## Usage
-To avoid dependency problems, we'll use `qlot`.  
-
-First, We need to change a directory to the project folder. 
-
-Then, typing `qlot exec ros -S . run` will load libraries from `quicklisp` inside the project folder.
-
 ```lisp
-# change a directory to the project
-$ cd ~/.roswell/local-projects/t-cool/cl-exercise
-
-# load the libraries from `quicklisp` folder inside the project
-$ qlot exec ros -S . run
-
 # load the system and start the server
 * (ql:quickload :cl-exercise)
 * (cl-exercise:start :port 8000 :debug nil)
@@ -104,8 +85,7 @@ This is an example of lessons.
   "media": "https://www.youtube.com/embed/HM1Zb3xmvMc",
   "description": "**setq**",
   "content": "
-  いま，パッケージに**result**というシンボルが存在します．
-  setqを使って、シンボルresultに2 + 3 * 4の計算結果を代入してください．
+  Please set the result of `2 + 3 * 4` to the symbol `reslut`.
   ",
   "prepare": "(defvar result nil)",
   "test": "(and (numberp result) (= result (+ 2 (* 3 4))))",
