@@ -22,23 +22,9 @@ macOS High Sierra, Ubuntu
 
 ## Requirement
 
-- Libev
+- [libev](http://software.schmorp.de/pkg/libev.html)
 
-```bash
-# macOS
-brew install libev
-
-# Ubuntu
-apt install libev-dev
-```
-
-- Roswell
-
-Please follow [Roswell Installation Guide](https://github.com/roswell/roswell/wiki/Installation), and then add the PATH to `ros` command.
-
-```
-echo "export PATH=\"\$HOME/.roswell/bin:\$PATH\"" >> ~/.bash_profile
-```
+- [Roswell](https://github.com/roswell/roswell)
 
 ## Installation
 
@@ -47,6 +33,7 @@ $ ros install t-cool/cl-exercise
 ```
 
 ## Usage
+
 ```lisp
 # load the system and start the server
 * (ql:quickload :cl-exercise)
