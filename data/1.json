@@ -1,13 +1,12 @@
 {
-  "name": "Binding",
-  "purpose": "シンボルに値を代入する",
+  "name": "setq",
+  "purpose": "set a value to a symbol",
   "media": "https://www.youtube.com/embed/HM1Zb3xmvMc",
   "description": "
   **setq**
   ",
   "content": "
-  いま，パッケージに**result**というシンボルが存在します．
-  setqを使って、シンボルresultに2 + 3 * 4の計算結果を代入してください．
+  Please set the result of 2+3*4 to the symbok named **result**
   ",
   "prepare": "(defvar result nil)",
   "test": "(and (numberp result) (= result (+ 2 (* 3 4))))",
