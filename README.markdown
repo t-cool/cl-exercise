@@ -4,27 +4,15 @@ Common Lisp Online Learning System
 
 ![screenshot](screenshot/screenshot.png)
 
-## To do
-
-- ~~to add evaluating answers function~~
-
-- ~~to embed an editor (Codemirror)~~
-
-- ~~to make a table of lessons~~
-
-- to add saving mode
-
-- to add lesson plans (base on cl-cookbook)
-
 ## Platform
 
-macOS High Sierra, Ubuntu
+macOS, Ubuntu
 
 ## Requirement
 
-- [libev](http://software.schmorp.de/pkg/libev.html)
-
 - [Roswell](https://github.com/roswell/roswell)
+
+- [libev](http://software.schmorp.de/pkg/libev.html)
 
 ## Installation
 
@@ -33,6 +21,16 @@ $ ros install t-cool/cl-exercise
 ```
 
 ## Usage
+
+If you add `~/.roswell/bin` to PATH, you can start the app with only one command.
+
+```
+$ cl-exercise
+```
+
+Then please open `http://localhost:8000` with a browser(Firefox or Chrome).
+
+### start from REPL
 
 ```lisp
 # load the system and start the server
@@ -43,11 +41,11 @@ $ ros install t-cool/cl-exercise
 * (cl-exercise:start :host "http://[GLOBAL_IP_ADDRESS]" :port 80)
 ```
 
-## Adding lessons
-
-The files of lessons are inside `data` directory in JSON format.
+## Adding lessons data
 
 You can add your own lessons. The format is as bellow:
+
+The files of lessons are inside `data` directory in JSON format.
 
  - `name`: lesson's name
 
