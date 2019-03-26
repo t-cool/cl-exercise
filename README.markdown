@@ -46,18 +46,10 @@ $ qlot install
 
 ## Usage
 
-First please check if you added `~/.roswell/bin` to PATH in `~/.bashrc`:
-
 ```
-export PATH=$PATH:~/.roswell/bin
-```
-
-### Using roswell/bin Command
-
-Now that you have added it to PATH, you can launch cl-exercise with only one command:
-
-```
-$ cl-exercise
+$ ros run
+* (ql:quickload :cl-exercise)
+* (cl-exercise:start :port 8000 :debug nil)
 ```
 
 Then please open `http://localhost:8000` with a browser(Firefox or Chrome):
