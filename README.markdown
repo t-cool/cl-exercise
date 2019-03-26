@@ -23,8 +23,10 @@ macOS, Ubuntu16.04
 ```
 $ brew install libev
 Warning: libev 4.24 is already installed and up-to-date```
+
 $ brew install roswell
 Warning: roswell 19.3.10.97 is already installed and up-to-date
+
 $ ros install fukamachi/qlot
 Installing from github fukamachi/qlot
 (omitted)
