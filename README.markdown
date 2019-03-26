@@ -29,6 +29,7 @@ $ ros install fukamachi/qlot
 Installing from github fukamachi/qlot
 (omitted)
 up to date. stop
+```
 
 2. Install cl-exercise using Roswell:
 
