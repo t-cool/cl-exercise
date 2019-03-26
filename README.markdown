@@ -6,39 +6,105 @@ Common Lisp Online Learning System
 
 ## Platform
 
-macOS, Ubuntu
+macOS, Ubuntu16.04
 
 ## Requirement
 
 - [Roswell](https://github.com/roswell/roswell)
 
+- [Qlot](https://github.com/fukamachi/qlot)
+
 - [libev](http://software.schmorp.de/pkg/libev.html)
 
 ## Installation
+
+1. Please check if you've already installed libev, Roswell, and Qlot:
+
+```
+$ brew install libev
+Warning: libev 4.24 is already installed and up-to-date```
+$ brew install roswell
+Warning: roswell 19.3.10.97 is already installed and up-to-date
+$ ros install fukamachi/qlot
+Installing from github fukamachi/qlot
+(omitted)
+up to date. stop
+
+2. Install cl-exercise using Roswell:
 
 ```
 $ ros install t-cool/cl-exercise
 ```
 
+3. Fix the version of dependent libraries with Qlot:
+
+```
+$ cd ~/.roswell/local-projects/t-cool/cl-exercise
+$ qlot install
+```
+
 ## Usage
 
-If you add `~/.roswell/bin` to PATH, you can start the app with only one command.
+First please check if you added `~/.roswell/bin` to PATH in `~/.bashrc`:
+
+```
+export PATH=$PATH:~/.roswell/bin
+```
+
+### Using roswell/bin Command
+
+Now that you have added it to PATH, you can launch cl-exercise with only one command:
 
 ```
 $ cl-exercise
 ```
 
-Then please open `http://localhost:8000` with a browser(Firefox or Chrome).
+Then please open `http://localhost:8000` with a browser(Firefox or Chrome):
 
-### start from REPL
+### launch cl-exercise with Qlot
 
 ```lisp
-# load the system and start the server
-* (ql:quickload :cl-exercise)
+$ ros run
+* (ql:quickload :qlot)
+* (qlot:quickload :cl-exercise)
 * (cl-exercise:start :port 8000 :debug nil)
+```
 
-;; Development / Publishing
+## Deployment
+
+Please install cl-exercise as above and start the app as following:
+
+```
 * (cl-exercise:start :host "http://[GLOBAL_IP_ADDRESS]" :port 80)
+```
+
+### Docker(Local)
+
+(work in progress)
+
+```
+# plan
+$ docker pull tcool/cl-exercise
+$ docker run -it -p 8000:8000 --name cl-exercise tcool/cl-exercise
+```
+
+### Heroku
+
+(work in progress)
+
+```
+$ heroku create --buildpack https://github.com/gos-k/heroku-buildpack-roswell
+$ git add .roswell-install-list .roswell-load-system-list app.lisp Procfile
+$ git commit -m "Initial commit"
+$ git push
+```
+
+### DigitalOcean
+
+(work in progress)
+
+```
+$ docker-machine create --digitalocean-size "s-2vcpu-4gb" --driver digitalocean --digitalocean-access-token PERSONAL_ACCESS_TOKEN facebox-prod-1
 ```
 
 ## Adding lessons data
