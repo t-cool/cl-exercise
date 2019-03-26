@@ -73,7 +73,7 @@ $ ros run
 
 ## Deployment
 
-Please install cl-exercise as above and start the app as following:
+Please start the app as following:
 
 ```
 * (cl-exercise:start :host "http://[GLOBAL_IP_ADDRESS]" :port 80)
