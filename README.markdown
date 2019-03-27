@@ -31,7 +31,7 @@ Installing from github fukamachi/qlot
 up to date. stop
 ```
 
-2. Install cl-exercise using Roswell:
+2. Please install cl-exercise using Roswell:
 
 ```
 $ ros install t-cool/cl-exercise
@@ -49,7 +49,7 @@ Then please open `http://localhost:8000` with a browser(Firefox or Chrome):
 
 ## Deployment
 
-Please start the app as following:
+You can start the app as following:
 
 ```
 * (cl-exercise:start :host "http://[GLOBAL_IP_ADDRESS]" :port 80)
