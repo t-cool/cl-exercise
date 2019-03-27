@@ -54,3 +54,10 @@
   :version "git-303f8ac0aa6ca0bc139aa3c34822e623c3723fab"
   :remote-url "https://github.com/Shinmera/trivial-mimes.git"
   :ref "303f8ac0aa6ca0bc139aa3c34822e623c3723fab"))
+("darkmatter" .
+ (:class qlot.source.github:source-github
+  :initargs (:project-name "darkmatter" :repos "tamamu/darkmatter" :ref nil :branch "refactor" :tag nil)
+  :version "github-1b632b9fe2c783c3ad7685f5db0c7d0fb1f9adcf"
+  :repos "tamamu/darkmatter"
+  :url "https://github.com/tamamu/darkmatter/archive/1b632b9fe2c783c3ad7685f5db0c7d0fb1f9adcf.tar.gz"
+  :ref "1b632b9fe2c783c3ad7685f5db0c7d0fb1f9adcf"))
