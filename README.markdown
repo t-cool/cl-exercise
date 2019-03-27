@@ -12,8 +12,6 @@ macOS, Ubuntu16.04
 
 - [Roswell](https://github.com/roswell/roswell)
 
-- [Qlot](https://github.com/fukamachi/qlot)
-
 - [libev](http://software.schmorp.de/pkg/libev.html)
 
 ## Installation
@@ -39,13 +37,6 @@ up to date. stop
 $ ros install t-cool/cl-exercise
 ```
 
-3. Fix the version of dependent libraries with Qlot:
-
-```
-$ cd ~/.roswell/local-projects/t-cool/cl-exercise
-$ qlot install
-```
-
 ## Usage
 
 ```
@@ -55,15 +46,6 @@ $ ros run
 ```
 
 Then please open `http://localhost:8000` with a browser(Firefox or Chrome):
-
-### launch cl-exercise with Qlot
-
-```lisp
-$ ros run
-* (ql:quickload :qlot)
-* (qlot:quickload :cl-exercise)
-* (cl-exercise:start :port 8000 :debug nil)
-```
 
 ## Deployment
 
