@@ -6,7 +6,7 @@
   **setq**
   ",
   "content": "
-  Please set the result of 2+3*4 to the symbok named **result**
+  Please set the result of 2+3*4 to the symbol named **result**
   ",
   "prepare": "(defvar result nil)",
   "test": "(and (numberp result) (= result (+ 2 (* 3 4))))",
